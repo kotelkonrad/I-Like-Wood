@@ -24,13 +24,11 @@ import yamahari.ilikewood.util.WoodType;
 
 @SuppressWarnings("NullableProblems")
 public class WoodenBarrelTileEntity extends LockableLootTileEntity implements IWooden {
-    private final WoodType woodType;
     private NonNullList<ItemStack> barrelContents;
     private int openCount;
 
-    public WoodenBarrelTileEntity(TileEntityType<?> tileEntityType, WoodType woodType) {
+    public WoodenBarrelTileEntity(TileEntityType<?> tileEntityType) {
         super(tileEntityType);
-        this.woodType = woodType;
         this.barrelContents = NonNullList.withSize(27, ItemStack.EMPTY);
     }
 
@@ -195,6 +193,6 @@ public class WoodenBarrelTileEntity extends LockableLootTileEntity implements IW
 
     @Override
     public WoodType getWoodType() {
-        return this.woodType;
+        return ((IWooden) this.getBlockState().getBlock()).getWoodType();
     }
 }

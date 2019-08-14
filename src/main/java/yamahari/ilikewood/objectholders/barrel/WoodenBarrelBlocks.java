@@ -8,20 +8,20 @@ import yamahari.ilikewood.util.Constants;
 public class WoodenBarrelBlocks {
 
     @ObjectHolder("acacia_barrel")
-    public static final WoodenBarrelBlock ACACIA_BARREL = null;
+    public static final WoodenBarrelBlock ACACIA = null;
 
     @ObjectHolder("birch_barrel")
-    public static final WoodenBarrelBlock BIRCH_BARREL = null;
+    public static final WoodenBarrelBlock BIRCH = null;
 
     @ObjectHolder("dark_oak_barrel")
-    public static final WoodenBarrelBlock DARK_OAK_BARREL = null;
+    public static final WoodenBarrelBlock DARK_OAK = null;
 
     @ObjectHolder("jungle_barrel")
-    public static final WoodenBarrelBlock JUNGLE_BARREL = null;
+    public static final WoodenBarrelBlock JUNGLE = null;
 
     @ObjectHolder("oak_barrel")
-    public static final WoodenBarrelBlock OAK_BARREL = null;
+    public static final WoodenBarrelBlock OAK = null;
 
     @ObjectHolder("spruce_barrel")
-    public static final WoodenBarrelBlock SPRUCE_BARREL = null;
+    public static final WoodenBarrelBlock SPRUCE = null;
 }

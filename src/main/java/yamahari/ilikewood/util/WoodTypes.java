@@ -1,10 +1,7 @@
 package yamahari.ilikewood.util;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import yamahari.ilikewood.config.ILikeWoodConfig;
-
-import java.util.List;
 
 public class WoodTypes {
     public static final WoodType ACACIA = new WoodType(
@@ -18,6 +15,10 @@ public class WoodTypes {
                     WoodenItemType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.ACACIA_CHEST_BURN_TIME::get
+                    ),
+                    WoodenItemType.LECTERN,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.ACACIA_LECTERN_BURN_TIME::get
                     )
             )
     );
@@ -33,6 +34,10 @@ public class WoodTypes {
                     WoodenItemType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.BIRCH_CHEST_BURN_TIME::get
+                    ),
+                    WoodenItemType.LECTERN,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.BIRCH_LECTERN_BURN_TIME::get
                     )
             )
     );
@@ -48,6 +53,10 @@ public class WoodTypes {
                     WoodenItemType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_CHEST_BURN_TIME::get
+                    ),
+                    WoodenItemType.LECTERN,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_LECTERN_BURN_TIME::get
                     )
             )
     );
@@ -63,6 +72,10 @@ public class WoodTypes {
                     WoodenItemType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.JUNGLE_CHEST_BURN_TIME::get
+                    ),
+                    WoodenItemType.LECTERN,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.JUNGLE_LECTERN_BURN_TIME::get
                     )
             )
     );
@@ -78,6 +91,10 @@ public class WoodTypes {
                     WoodenItemType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.OAK_CHEST_BURN_TIME::get
+                    ),
+                    WoodenItemType.LECTERN,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.OAK_LECTERN_BURN_TIME::get
                     )
             )
     );
@@ -93,9 +110,11 @@ public class WoodTypes {
                     WoodenItemType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.SPRUCE_CHEST_BURN_TIME::get
+                    ),
+                    WoodenItemType.LECTERN,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.SPRUCE_LECTERN_BURN_TIME::get
                     )
             )
     );
-
-    public static final List<WoodType> VALUES = ImmutableList.of(ACACIA, BIRCH, DARK_OAK, JUNGLE, OAK, SPRUCE);
 }

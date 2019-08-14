@@ -1,7 +1,9 @@
 package yamahari.ilikewood;
 
 import net.minecraft.block.Block;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -16,20 +18,24 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import yamahari.ilikewood.blocks.WoodenBarrelBlock;
 import yamahari.ilikewood.blocks.WoodenChestBlock;
+import yamahari.ilikewood.blocks.WoodenLecternBlock;
 import yamahari.ilikewood.config.ILikeWoodConfig;
-import yamahari.ilikewood.items.WoodenBarrelItem;
-import yamahari.ilikewood.items.WoodenChestItem;
+import yamahari.ilikewood.container.WoodenLecternContainer;
+import yamahari.ilikewood.items.WoodenBlockItem;
+import yamahari.ilikewood.objectholders.WoodenTileEntityTypes;
 import yamahari.ilikewood.objectholders.barrel.WoodenBarrelBlocks;
-import yamahari.ilikewood.objectholders.barrel.WoodenBarrelTileEntities;
 import yamahari.ilikewood.objectholders.chest.WoodenChestBlocks;
-import yamahari.ilikewood.objectholders.chest.WoodenChestTileEntities;
+import yamahari.ilikewood.objectholders.lectern.WoodenLecternBlocks;
 import yamahari.ilikewood.proxy.ClientProxy;
 import yamahari.ilikewood.proxy.CommonProxy;
 import yamahari.ilikewood.proxy.IProxy;
 import yamahari.ilikewood.tilenentities.WoodenBarrelTileEntity;
 import yamahari.ilikewood.tilenentities.WoodenChestTileEntity;
+import yamahari.ilikewood.tilenentities.WoodenLecternTileEntity;
+import yamahari.ilikewood.tilenentities.renderer.WoodenChestItemStackTileEntityRenderer;
 import yamahari.ilikewood.util.Constants;
 import yamahari.ilikewood.util.WoodTypes;
+import yamahari.ilikewood.util.WoodenItemType;
 
 import java.util.stream.Stream;
 
@@ -38,7 +44,7 @@ public class ILikeWood {
     @SuppressWarnings("unused")
     public static final Logger logger = LogManager.getLogger(Constants.MOD_ID);
 
-    private static final IProxy proxy = DistExecutor.runForDist(() -> () -> new ClientProxy(), () -> () -> new CommonProxy());
+    private static final IProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 
     public ILikeWood() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ILikeWoodConfig.COMMON_SPEC);
@@ -54,22 +60,13 @@ public class ILikeWood {
     public static class ModEventHandler {
         @SubscribeEvent
         public static void onRegisterBlock(final RegistryEvent.Register<Block> event) {
-            IForgeRegistry<Block> blockRegistry = event.getRegistry();
-
-            blockRegistry.registerAll(
-                    new WoodenBarrelBlock(WoodTypes.ACACIA, () -> WoodenBarrelTileEntities.ACACIA_BARREL),
-                    new WoodenBarrelBlock(WoodTypes.BIRCH, () -> WoodenBarrelTileEntities.BIRCH_BARREL),
-                    new WoodenBarrelBlock(WoodTypes.DARK_OAK, () -> WoodenBarrelTileEntities.DARK_OAK_BARREL),
-                    new WoodenBarrelBlock(WoodTypes.JUNGLE, () -> WoodenBarrelTileEntities.JUNGLE_BARREL),
-                    new WoodenBarrelBlock(WoodTypes.OAK, () -> WoodenBarrelTileEntities.OAK_BARREL),
-                    new WoodenBarrelBlock(WoodTypes.SPRUCE, () -> WoodenBarrelTileEntities.SPRUCE_BARREL),
-                    new WoodenChestBlock(WoodTypes.ACACIA, () -> WoodenChestTileEntities.ACACIA_CHEST),
-                    new WoodenChestBlock(WoodTypes.BIRCH, () -> WoodenChestTileEntities.BIRCH_CHEST),
-                    new WoodenChestBlock(WoodTypes.DARK_OAK, () -> WoodenChestTileEntities.DARK_OAK_CHEST),
-                    new WoodenChestBlock(WoodTypes.JUNGLE, () -> WoodenChestTileEntities.JUNGLE_CHEST),
-                    new WoodenChestBlock(WoodTypes.OAK, () -> WoodenChestTileEntities.OAK_CHEST),
-                    new WoodenChestBlock(WoodTypes.SPRUCE, () -> WoodenChestTileEntities.SPRUCE_CHEST)
-            );
+            Stream.of(WoodTypes.ACACIA, WoodTypes.BIRCH, WoodTypes.DARK_OAK, WoodTypes.JUNGLE, WoodTypes.OAK, WoodTypes.SPRUCE)
+                    .forEach(woodType -> event.getRegistry().registerAll(
+                            new WoodenBarrelBlock(woodType, () -> WoodenTileEntityTypes.BARREL),
+                            new WoodenChestBlock(woodType, () -> WoodenTileEntityTypes.CHEST),
+                            new WoodenLecternBlock(woodType, () -> WoodenTileEntityTypes.LECTERN)
+                            )
+                    );
         }
 
         @SuppressWarnings("ConstantConditions")
@@ -77,41 +74,42 @@ public class ILikeWood {
         public static void onRegisterItem(final RegistryEvent.Register<Item> event) {
             IForgeRegistry<Item> itemRegistry = event.getRegistry();
 
-            Stream.of(WoodenBarrelBlocks.ACACIA_BARREL, WoodenBarrelBlocks.BIRCH_BARREL, WoodenBarrelBlocks.DARK_OAK_BARREL, WoodenBarrelBlocks.JUNGLE_BARREL, WoodenBarrelBlocks.OAK_BARREL, WoodenBarrelBlocks.SPRUCE_BARREL)
-                    .forEach(block -> itemRegistry.register(new WoodenBarrelItem(block)));
+            Stream.of(WoodenBarrelBlocks.ACACIA, WoodenBarrelBlocks.BIRCH, WoodenBarrelBlocks.DARK_OAK, WoodenBarrelBlocks.JUNGLE, WoodenBarrelBlocks.OAK, WoodenBarrelBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenItemType.BARREL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
 
-            Stream.of(WoodenChestBlocks.ACACIA_CHEST, WoodenChestBlocks.BIRCH_CHEST, WoodenChestBlocks.DARK_OAK_CHEST, WoodenChestBlocks.JUNGLE_CHEST, WoodenChestBlocks.OAK_CHEST, WoodenChestBlocks.SPRUCE_CHEST)
-                    .forEach(block -> itemRegistry.register(new WoodenChestItem(block)));
+            Stream.of(WoodenChestBlocks.ACACIA, WoodenChestBlocks.BIRCH, WoodenChestBlocks.DARK_OAK, WoodenChestBlocks.JUNGLE, WoodenChestBlocks.OAK, WoodenChestBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenItemType.CHEST, (new Item.Properties()).group(ItemGroup.DECORATIONS).setTEISR(() -> WoodenChestItemStackTileEntityRenderer::new))));
+
+            Stream.of(WoodenLecternBlocks.ACACIA, WoodenLecternBlocks.BIRCH, WoodenLecternBlocks.DARK_OAK, WoodenLecternBlocks.JUNGLE, WoodenLecternBlocks.OAK, WoodenLecternBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenItemType.LECTERN, (new Item.Properties()).group(ItemGroup.REDSTONE))));
         }
 
         @SuppressWarnings("ConstantConditions")
         @SubscribeEvent
         public static void onRegisterTileEntityType(final RegistryEvent.Register<TileEntityType<?>> event) {
-            IForgeRegistry<TileEntityType<?>> tileEntityTypeRegistry = event.getRegistry();
+            event.getRegistry().registerAll(
+                    TileEntityType.Builder.create(
+                            () -> new WoodenBarrelTileEntity(WoodenTileEntityTypes.BARREL),
+                            WoodenBarrelBlocks.ACACIA, WoodenBarrelBlocks.BIRCH, WoodenBarrelBlocks.DARK_OAK, WoodenBarrelBlocks.JUNGLE, WoodenBarrelBlocks.OAK, WoodenBarrelBlocks.SPRUCE
+                    ).build(null).setRegistryName("wooden_barrel"),
+                    TileEntityType.Builder.create(
+                            () -> new WoodenChestTileEntity(WoodenTileEntityTypes.CHEST, Constants.TEXTURES_CHEST, Constants.TEXTURES_CHEST_DOUBLE),
+                            WoodenChestBlocks.ACACIA, WoodenChestBlocks.BIRCH, WoodenChestBlocks.DARK_OAK, WoodenChestBlocks.JUNGLE, WoodenChestBlocks.OAK, WoodenChestBlocks.SPRUCE
+                    ).build(null).setRegistryName("wooden_chest"),
+                    TileEntityType.Builder.create(
+                            () -> new WoodenLecternTileEntity(WoodenTileEntityTypes.LECTERN),
+                            WoodenLecternBlocks.ACACIA, WoodenLecternBlocks.BIRCH, WoodenLecternBlocks.DARK_OAK, WoodenLecternBlocks.JUNGLE, WoodenLecternBlocks.OAK, WoodenLecternBlocks.SPRUCE
+                    ).build(null).setRegistryName("wooden_lectern")
+            );
+        }
 
-            Stream.of(WoodenBarrelBlocks.ACACIA_BARREL, WoodenBarrelBlocks.BIRCH_BARREL, WoodenBarrelBlocks.DARK_OAK_BARREL, WoodenBarrelBlocks.JUNGLE_BARREL, WoodenBarrelBlocks.OAK_BARREL, WoodenBarrelBlocks.SPRUCE_BARREL)
-                    .forEach(block -> tileEntityTypeRegistry.register(
-                            TileEntityType.Builder.create(
-                                    () -> new WoodenBarrelTileEntity(
-                                            block.getTileEntityType(),
-                                            block.getWoodType()
-                                    ),
-                                    block
-                            ).build(null).setRegistryName(block.getRegistryName())
-                    ));
+        @SubscribeEvent
+        public static void onRegisterContainerType(final RegistryEvent.Register<ContainerType<?>> event) {
+            IForgeRegistry<ContainerType<?>> containerRegistry = event.getRegistry();
 
-            Stream.of(WoodenChestBlocks.ACACIA_CHEST, WoodenChestBlocks.BIRCH_CHEST, WoodenChestBlocks.DARK_OAK_CHEST, WoodenChestBlocks.JUNGLE_CHEST, WoodenChestBlocks.OAK_CHEST, WoodenChestBlocks.SPRUCE_CHEST)
-                    .forEach(block -> tileEntityTypeRegistry.register(
-                            TileEntityType.Builder.create(
-                                    () -> new WoodenChestTileEntity(
-                                            block.getTileEntityType(),
-                                            block.getWoodType(),
-                                            Constants.TEXTURE_CHEST.get(block.getWoodType()),
-                                            Constants.TEXTURE_CHEST_DOUBLE.get(block.getWoodType())
-                                    ),
-                                    block
-                            ).build(null).setRegistryName(block.getRegistryName())
-                    ));
+            containerRegistry.registerAll(
+                    new ContainerType<>((id, x) -> new WoodenLecternContainer(id)).setRegistryName("wooden_lectern_container")
+            );
         }
     }
 }

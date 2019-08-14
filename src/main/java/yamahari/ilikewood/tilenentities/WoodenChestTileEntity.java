@@ -23,27 +23,31 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.IItemHandlerModifiable;
 import yamahari.ilikewood.blocks.WoodenChestBlock;
+import yamahari.ilikewood.util.Constants;
 import yamahari.ilikewood.util.IWooden;
 import yamahari.ilikewood.util.WoodType;
 
+import javax.annotation.Nullable;
+import java.util.Map;
+
 @SuppressWarnings("NullableProblems")
 public class WoodenChestTileEntity extends LockableLootTileEntity implements IChestLid, ITickableTileEntity, IWooden {
-    private final WoodType woodType;
-    private final ResourceLocation singleChest;
-    private final ResourceLocation doubleChest;
+    private final Map<WoodType, ResourceLocation> singleChestResources;
+    private final Map<WoodType, ResourceLocation> doubleChestResources;
     private NonNullList<ItemStack> chestContents = NonNullList.withSize(27, ItemStack.EMPTY);
     private float lidAngle;
     private float prevLidAngle;
     private int numPlayersUsing;
     private int ticksSinceSync;
-    private net.minecraftforge.common.util.LazyOptional<net.minecraftforge.items.IItemHandlerModifiable> chestHandler;
+    private LazyOptional<IItemHandlerModifiable> chestHandler;
 
-    public WoodenChestTileEntity(TileEntityType<?> typeIn, WoodType woodType, ResourceLocation singleChest, ResourceLocation doubleChest) {
+    public WoodenChestTileEntity(TileEntityType<?> typeIn, Map<WoodType, ResourceLocation> singleChestResources, Map<WoodType, ResourceLocation> doubleChestResources) {
         super(typeIn);
-        this.woodType = woodType;
-        this.singleChest = singleChest;
-        this.doubleChest = doubleChest;
+        this.singleChestResources = singleChestResources;
+        this.doubleChestResources = doubleChestResources;
     }
 
     public static int getNumPlayerUsing(World world, LockableTileEntity lockableTileEntity, int ticksSinceSync, int x, int y, int z, int numPlayerUsing) {
@@ -67,12 +71,16 @@ public class WoodenChestTileEntity extends LockableLootTileEntity implements ICh
         return i;
     }
 
-    public ResourceLocation getChestResourceLocation(boolean notSingle) {
-        return notSingle ? this.doubleChest : this.singleChest;
+    public ResourceLocation getChestResourceLocation(boolean notSingle, @Nullable WoodType woodType) {
+        return notSingle ?
+                this.doubleChestResources.getOrDefault(woodType == null ? this.getWoodType() : woodType, Constants.TEXTURE_CHEST_DOUBLE_DEFAULT) :
+                this.singleChestResources.getOrDefault(woodType == null ? this.getWoodType() : woodType, Constants.TEXTURE_CHEST_DEFAULT);
     }
 
     @Override
-    public WoodType getWoodType() { return this.woodType; }
+    public WoodType getWoodType() {
+        return ((IWooden) this.getBlockState().getBlock()).getWoodType();
+    }
 
     @Override
     public void read(CompoundNBT compound) {

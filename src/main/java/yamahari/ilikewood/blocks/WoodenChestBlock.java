@@ -86,23 +86,6 @@ public class WoodenChestBlock extends ChestBlock implements IWooden {
 
     private final LazyLoadBase<TileEntityType<WoodenChestTileEntity>> tileEntityType;
 
-    private static boolean isBlocked(IWorld world, BlockPos blockPos) {
-        return isBelowSolidBlock(world, blockPos) || isCatSittingOn(world, blockPos);
-    }
-
-    private static boolean isBelowSolidBlock(IBlockReader blockReader, BlockPos blockPos) {
-        BlockPos up = blockPos.up();
-        return blockReader.getBlockState(up).isNormalCube(blockReader, up);
-    }
-
-    private static boolean isCatSittingOn(IWorld world, BlockPos blockPos) {
-        List<CatEntity> catEntities = world.getEntitiesWithinAABB(CatEntity.class, new AxisAlignedBB(blockPos.getX(), blockPos.getY() + 1, blockPos.getZ(), blockPos.getX() + 1, blockPos.getY() + 2, blockPos.getZ() + 1));
-        for(CatEntity catEntity : catEntities) {
-            if(catEntity.isSitting()) return true;
-        }
-        return false;
-    }
-
     public WoodenChestBlock(WoodType woodType, Supplier<TileEntityType<WoodenChestTileEntity>> tileEntityType) {
         super(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5f).sound(SoundType.WOOD));
         this.woodType = woodType;
@@ -135,6 +118,16 @@ public class WoodenChestBlock extends ChestBlock implements IWooden {
     public int getComparatorInputOverride(BlockState blockState, World world, BlockPos blockPos) {
         return Container.calcRedstoneFromInventory(getInventory(blockState, world, blockPos, false));
     }
+
+    private static boolean isBlocked(IWorld world, BlockPos blockPos) {
+        return isBelowSolidBlock(world, blockPos) || isCatSittingOn(world, blockPos);
+    }
+
+    private static boolean isBelowSolidBlock(IBlockReader blockReader, BlockPos blockPos) {
+        BlockPos up = blockPos.up();
+        return blockReader.getBlockState(up).isNormalCube(blockReader, up);
+    }
+
 
     @Nullable
     private static <T> T invokeFactory(BlockState blockState, IWorld world, BlockPos blockPos, boolean p_220106_3_, WoodenChestBlock.InventoryFactory<T> inventoryFactory) {
@@ -170,6 +163,14 @@ public class WoodenChestBlock extends ChestBlock implements IWooden {
                 return inventoryFactory.forSingle(woodenChestTileEntity);
             }
         }
+    }
+
+    private static boolean isCatSittingOn(IWorld world, BlockPos blockPos) {
+        List<CatEntity> catEntities = world.getEntitiesWithinAABB(CatEntity.class, new AxisAlignedBB(blockPos.getX(), blockPos.getY() + 1, blockPos.getZ(), blockPos.getX() + 1, blockPos.getY() + 2, blockPos.getZ() + 1));
+        for (CatEntity catEntity : catEntities) {
+            if (catEntity.isSitting()) return true;
+        }
+        return false;
     }
 
     @Override

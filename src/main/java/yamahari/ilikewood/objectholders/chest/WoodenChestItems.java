@@ -9,20 +9,20 @@ import yamahari.ilikewood.util.Constants;
 public class WoodenChestItems {
 
     @ObjectHolder("acacia_chest")
-    public static final Item ACACIA_CHEST = null;
+    public static final Item ACACIA = null;
 
     @ObjectHolder("birch_chest")
-    public static final Item BIRCH_CHEST = null;
+    public static final Item BIRCH = null;
 
     @ObjectHolder("dark_oak_chest")
-    public static final Item DARK_OAK_CHEST = null;
+    public static final Item DARK_OAK = null;
 
     @ObjectHolder("jungle_chest")
-    public static final Item JUNGLE_CHEST = null;
+    public static final Item JUNGLE = null;
 
     @ObjectHolder("oak_chest")
-    public static final Item OAK_CHEST = null;
+    public static final Item OAK = null;
 
     @ObjectHolder("spruce_chest")
-    public static final Item SPRUCE_CHEST = null;
+    public static final Item SPRUCE = null;
 }

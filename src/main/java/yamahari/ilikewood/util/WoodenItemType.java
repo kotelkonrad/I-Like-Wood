@@ -4,7 +4,8 @@ import net.minecraft.util.IStringSerializable;
 
 public enum WoodenItemType implements IStringSerializable {
     BARREL("barrel"),
-    CHEST("chest");
+    CHEST("chest"),
+    LECTERN("lectern");
 
     private final String name;
 
