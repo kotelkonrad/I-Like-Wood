@@ -11,6 +11,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Hand;
+import net.minecraft.util.LazyLoadBase;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
@@ -26,12 +27,12 @@ import java.util.function.Supplier;
 @SuppressWarnings("NullableProblems")
 public class WoodenBarrelBlock extends BarrelBlock implements IWooden {
     private final WoodType woodType;
-    private final Supplier<TileEntityType<WoodenBarrelTileEntity>> tileEntityType;
+    private final LazyLoadBase<TileEntityType<WoodenBarrelTileEntity>> tileEntityType;
 
     public WoodenBarrelBlock(WoodType woodType, Supplier<TileEntityType<WoodenBarrelTileEntity>> tileEntityType) {
         super(Block.Properties.from(Blocks.BARREL));
         this.woodType = woodType;
-        this.tileEntityType = tileEntityType;
+        this.tileEntityType = new LazyLoadBase<>(tileEntityType);
         this.setRegistryName(this.woodType.getModId(), this.woodType.getName() + "_barrel");
     }
 
@@ -50,12 +51,12 @@ public class WoodenBarrelBlock extends BarrelBlock implements IWooden {
     }
 
     public TileEntityType<WoodenBarrelTileEntity> getTileEntityType() {
-        return this.tileEntityType.get();
+        return this.tileEntityType.getValue();
     }
 
     @Override
     public TileEntity createNewTileEntity(IBlockReader blockReader) {
-        return this.tileEntityType.get().create();
+        return this.getTileEntityType().create();
     }
 
     @Override

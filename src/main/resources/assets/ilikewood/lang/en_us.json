@@ -22,5 +22,11 @@
   "container.ilikewood.spruce_chest": "Spruce Chest",
   "container.ilikewood.birch_chest": "Birch Chest",
   "container.ilikewood.jungle_chest": "Jungle Chest",
-  "container.ilikewood.acacia_chest": "Acacia Chest"
+  "container.ilikewood.acacia_chest": "Acacia Chest",
+  "container.ilikewood.oak_double_chest": "Large Oak Chest",
+  "container.ilikewood.dark_oak_double_chest": "Large Dark Oak Chest",
+  "container.ilikewood.spruce_double_chest": "Large Spruce Chest",
+  "container.ilikewood.birch_double_chest": "Large Birch Chest",
+  "container.ilikewood.jungle_double_chest": "Large Jungle Chest",
+  "container.ilikewood.acacia_double_chest": "Large Acacia Chest"
 }
