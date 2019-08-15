@@ -52,5 +52,11 @@
   "block.ilikewood.spruce_bookshelf": "Spruce Bookshelf",
   "block.ilikewood.birch_bookshelf": "Birch Bookshelf",
   "block.ilikewood.jungle_bookshelf": "Jungle Bookshelf",
-  "block.ilikewood.acacia_bookshelf": "Acacia Bookshelf"
+  "block.ilikewood.acacia_bookshelf": "Acacia Bookshelf",
+  "block.ilikewood.oak_composter": "Oak Composter",
+  "block.ilikewood.dark_oak_composter": "Dark Oak Composter",
+  "block.ilikewood.spruce_composter": "Spruce Composter",
+  "block.ilikewood.birch_composter": "Birch Composter",
+  "block.ilikewood.jungle_composter": "Jungle Composter",
+  "block.ilikewood.acacia_composter": "Acacia Composter"
 }

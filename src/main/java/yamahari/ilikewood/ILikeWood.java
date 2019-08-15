@@ -27,6 +27,7 @@ import yamahari.ilikewood.objectholders.WoodenTileEntityTypes;
 import yamahari.ilikewood.objectholders.barrel.WoodenBarrelBlocks;
 import yamahari.ilikewood.objectholders.bookshelf.WoodenBookshelfBlocks;
 import yamahari.ilikewood.objectholders.chest.WoodenChestBlocks;
+import yamahari.ilikewood.objectholders.composter.WoodenComposterBlocks;
 import yamahari.ilikewood.objectholders.lectern.WoodenLecternBlocks;
 import yamahari.ilikewood.objectholders.panels.WoodenPanelsBlocks;
 import yamahari.ilikewood.proxy.ClientProxy;
@@ -70,7 +71,8 @@ public class ILikeWood {
                                     new WoodenChestBlock(woodType, () -> WoodenTileEntityTypes.CHEST),
                                     new WoodenLecternBlock(woodType, () -> WoodenTileEntityTypes.LECTERN),
                                     new WoodenBlock(woodType, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.f).sound(SoundType.WOOD)).setRegistryName(woodType.getName() + "_" + WoodenBlockType.PANELS.getName()),
-                                    new WoodenBookshelfBlock(woodType)
+                                    new WoodenBookshelfBlock(woodType),
+                                    new WoodenComposterBlock(woodType)
                             )
                     );
         }
@@ -94,6 +96,9 @@ public class ILikeWood {
 
             Stream.of(WoodenBookshelfBlocks.ACACIA, WoodenBookshelfBlocks.BIRCH, WoodenBookshelfBlocks.DARK_OAK, WoodenBookshelfBlocks.JUNGLE, WoodenBookshelfBlocks.OAK, WoodenBookshelfBlocks.SPRUCE)
                     .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.BOOKSHELF, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+
+            Stream.of(WoodenComposterBlocks.ACACIA, WoodenComposterBlocks.BIRCH, WoodenComposterBlocks.DARK_OAK, WoodenComposterBlocks.JUNGLE, WoodenComposterBlocks.OAK, WoodenComposterBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.COMPOSTER, (new Item.Properties()).group(ItemGroup.MISC))));
         }
 
         @SuppressWarnings("ConstantConditions")

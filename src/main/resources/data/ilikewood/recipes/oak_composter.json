@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "F F",
+    "F F",
+    "###"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:oak_fence"
+    },
+    "#": {
+      "item": "ilikewood:oak_panels"
+    }
+  },
+  "result": {
+    "item": "ilikewood:oak_composter"
+  }
+}

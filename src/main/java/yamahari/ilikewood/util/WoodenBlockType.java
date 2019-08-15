@@ -4,10 +4,11 @@ import net.minecraft.util.IStringSerializable;
 
 public enum WoodenBlockType implements IStringSerializable {
     BARREL("barrel"),
+    BOOKSHELF("bookshelf"),
     CHEST("chest"),
+    COMPOSTER("composter"),
     LECTERN("lectern"),
-    PANELS("panels"),
-    BOOKSHELF("bookshelf");
+    PANELS("panels");
 
     private final String name;
 
