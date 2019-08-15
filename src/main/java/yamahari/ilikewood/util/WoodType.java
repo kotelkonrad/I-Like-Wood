@@ -10,11 +10,13 @@ public class WoodType implements IStringSerializable {
     private final String name;
     private final String modId;
     private final Map<WoodenBlockType, WoodTypeProperties> woodTypeProperties;
+    private final Supplier<Double> enchantingPowerBonus;
 
-    public WoodType(String name, String modId, Map<WoodenBlockType, WoodTypeProperties> woodTypeProperties) {
+    public WoodType(String name, String modId, Map<WoodenBlockType, WoodTypeProperties> woodTypeProperties, Supplier<Double> enchantingPowerBonus) {
         this.name = name;
         this.modId = modId;
         this.woodTypeProperties = woodTypeProperties;
+        this.enchantingPowerBonus = enchantingPowerBonus;
     }
 
     @Override
@@ -28,6 +30,10 @@ public class WoodType implements IStringSerializable {
 
     public WoodTypeProperties getWoodTypeProperties(WoodenBlockType woodenBlockType) {
         return this.woodTypeProperties.getOrDefault(woodenBlockType, new WoodTypeProperties(() -> -1));
+    }
+
+    public float getEnchantingPowerBonus() {
+        return this.enchantingPowerBonus.get().floatValue();
     }
 
     public static class WoodTypeProperties {

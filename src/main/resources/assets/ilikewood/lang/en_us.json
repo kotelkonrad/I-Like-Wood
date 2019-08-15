@@ -46,5 +46,11 @@
   "block.ilikewood.spruce_panels": "Spruce Panels",
   "block.ilikewood.birch_panels": "Birch Panels",
   "block.ilikewood.jungle_panels": "Jungle Panels",
-  "block.ilikewood.acacia_panels": "Acacia Panels"
+  "block.ilikewood.acacia_panels": "Acacia Panels",
+  "block.ilikewood.oak_bookshelf": "Oak Bookshelf",
+  "block.ilikewood.dark_oak_bookshelf": "Dark Oak Bookshelf",
+  "block.ilikewood.spruce_bookshelf": "Spruce Bookshelf",
+  "block.ilikewood.birch_bookshelf": "Birch Bookshelf",
+  "block.ilikewood.jungle_bookshelf": "Jungle Bookshelf",
+  "block.ilikewood.acacia_bookshelf": "Acacia Bookshelf"
 }

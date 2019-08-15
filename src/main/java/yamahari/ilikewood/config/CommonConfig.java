@@ -196,7 +196,46 @@ public class CommonConfig {
     public final ForgeConfigSpec.IntValue OAK_PANELS_BURN_TIME;
     public final ForgeConfigSpec.IntValue SPRUCE_PANELS_BURN_TIME;
 
+    public final ForgeConfigSpec.IntValue ACACIA_BOOKSHELF_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_BOOKSHELF_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_BOOKSHELF_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_BOOKSHELF_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_BOOKSHELF_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_BOOKSHELF_BURN_TIME;
+
+    public final ForgeConfigSpec.DoubleValue ACACIA_ENCHANTING_POWER_BONUS;
+    public final ForgeConfigSpec.DoubleValue BIRCH_ENCHANTING_POWER_BONUS;
+    public final ForgeConfigSpec.DoubleValue DARK_OAK_ENCHANTING_POWER_BONUS;
+    public final ForgeConfigSpec.DoubleValue JUNGLE_ENCHANTING_POWER_BONUS;
+    public final ForgeConfigSpec.DoubleValue OAK_ENCHANTING_POWER_BONUS;
+    public final ForgeConfigSpec.DoubleValue SPRUCE_ENCHANTING_POWER_BONUS;
+
+
     CommonConfig(ForgeConfigSpec.Builder builder) {
+        builder.comment("Block Configuration").push("block");
+        builder.comment("Enchanting Power Bonus").push("enchanting_power_bonus");
+
+        this.ACACIA_ENCHANTING_POWER_BONUS = builder
+                .defineInRange("acacia", 1.0, 0.0, Float.MAX_VALUE);
+
+        this.BIRCH_ENCHANTING_POWER_BONUS = builder
+                .defineInRange("birch", 1.0, 0.0, Float.MAX_VALUE);
+
+        this.DARK_OAK_ENCHANTING_POWER_BONUS = builder
+                .defineInRange("dark_oak", 1.0, 0.0, Float.MAX_VALUE);
+
+        this.JUNGLE_ENCHANTING_POWER_BONUS = builder
+                .defineInRange("jungle", 1.0, 0.0, Float.MAX_VALUE);
+
+        this.OAK_ENCHANTING_POWER_BONUS = builder
+                .defineInRange("oak", 1.0, 0.0, Float.MAX_VALUE);
+
+        this.SPRUCE_ENCHANTING_POWER_BONUS = builder
+                .defineInRange("spruce", 1.0, 0.0, Float.MAX_VALUE);
+
+        builder.pop(); // enchanting_power_bonus
+        builder.pop(); // block
+
         builder.comment("Item Configuration").push("item");
         builder.comment("Burn Time").push("burn_time");
         builder.comment("Barrel").push("barrel");
@@ -286,6 +325,28 @@ public class CommonConfig {
                 .defineInRange("spruce", 300, -1, Integer.MAX_VALUE);
 
         builder.pop(); // panels
+
+        builder.comment("Bookshelf").push("bookshelf");
+
+        this.ACACIA_BOOKSHELF_BURN_TIME = builder
+                .defineInRange("acacia", 300, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_BOOKSHELF_BURN_TIME = builder
+                .defineInRange("birch", 300, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_BOOKSHELF_BURN_TIME = builder
+                .defineInRange("dark_oak", 300, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_BOOKSHELF_BURN_TIME = builder
+                .defineInRange("jungle", 300, -1, Integer.MAX_VALUE);
+
+        this.OAK_BOOKSHELF_BURN_TIME = builder
+                .defineInRange("oak", 300, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_BOOKSHELF_BURN_TIME = builder
+                .defineInRange("spruce", 300, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // bookshelf
         builder.pop(); // burn_time
         builder.pop(); // item
 
