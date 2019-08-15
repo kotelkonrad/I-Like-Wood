@@ -29,6 +29,7 @@ import net.minecraft.world.World;
 import yamahari.ilikewood.tilenentities.WoodenChestTileEntity;
 import yamahari.ilikewood.util.IWooden;
 import yamahari.ilikewood.util.WoodType;
+import yamahari.ilikewood.util.WoodenBlockType;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -90,7 +91,7 @@ public class WoodenChestBlock extends ChestBlock implements IWooden {
         super(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.5f).sound(SoundType.WOOD));
         this.woodType = woodType;
         this.tileEntityType = new LazyLoadBase<>(tileEntityType);
-        this.setRegistryName(woodType.getModId(), woodType.getName() + "_chest");
+        this.setRegistryName(woodType.getModId(), woodType.getName() + "_" + WoodenBlockType.CHEST.getName());
     }
 
     @Override

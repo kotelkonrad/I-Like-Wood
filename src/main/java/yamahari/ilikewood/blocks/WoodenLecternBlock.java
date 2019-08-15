@@ -4,9 +4,7 @@ import net.minecraft.block.*;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.WritableBookItem;
+import net.minecraft.item.*;
 import net.minecraft.pathfinding.PathType;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
@@ -26,6 +24,7 @@ import net.minecraft.world.World;
 import yamahari.ilikewood.tilenentities.WoodenLecternTileEntity;
 import yamahari.ilikewood.util.IWooden;
 import yamahari.ilikewood.util.WoodType;
+import yamahari.ilikewood.util.WoodenBlockType;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -38,13 +37,16 @@ public class WoodenLecternBlock extends ContainerBlock implements IWooden {
     public static final BooleanProperty HAS_BOOK;
     public static final VoxelShape field_220159_d;
     public static final VoxelShape field_220160_e;
-    public static final VoxelShape field_220161_f;
+    public static final VoxelShape DEFAULT_SHAPE;
     public static final VoxelShape field_220162_g;
-    public static final VoxelShape field_220164_h;
-    public static final VoxelShape field_220165_i;
-    public static final VoxelShape field_220166_j;
-    public static final VoxelShape field_220167_k;
-    public static final VoxelShape field_220163_w;
+    public static final VoxelShape COLLISION_SHAPE;
+    public static final VoxelShape FACING_WEST_SHAPE;
+    public static final VoxelShape FACING_NORTH_SHAPE;
+    public static final VoxelShape FACING_EAST_SHAPE;
+    public static final VoxelShape FACING_SOUTH_SHAPE;
+
+    private final WoodType woodType;
+    private final LazyLoadBase<TileEntityType<WoodenLecternTileEntity>> tileEntityType;
 
     static {
         FACING = HorizontalBlock.HORIZONTAL_FACING;
@@ -52,66 +54,13 @@ public class WoodenLecternBlock extends ContainerBlock implements IWooden {
         HAS_BOOK = BlockStateProperties.HAS_BOOK;
         field_220159_d = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 2.0D, 16.0D);
         field_220160_e = Block.makeCuboidShape(4.0D, 2.0D, 4.0D, 12.0D, 14.0D, 12.0D);
-        field_220161_f = VoxelShapes.or(field_220159_d, field_220160_e);
+        DEFAULT_SHAPE = VoxelShapes.or(field_220159_d, field_220160_e);
         field_220162_g = Block.makeCuboidShape(0.0D, 15.0D, 0.0D, 16.0D, 15.0D, 16.0D);
-        field_220164_h = VoxelShapes.or(field_220161_f, field_220162_g);
-        field_220165_i = VoxelShapes.or(Block.makeCuboidShape(1.0D, 10.0D, 0.0D, 5.333333D, 14.0D, 16.0D), Block.makeCuboidShape(5.333333D, 12.0D, 0.0D, 9.666667D, 16.0D, 16.0D), Block.makeCuboidShape(9.666667D, 14.0D, 0.0D, 14.0D, 18.0D, 16.0D), field_220161_f);
-        field_220166_j = VoxelShapes.or(Block.makeCuboidShape(0.0D, 10.0D, 1.0D, 16.0D, 14.0D, 5.333333D), Block.makeCuboidShape(0.0D, 12.0D, 5.333333D, 16.0D, 16.0D, 9.666667D), Block.makeCuboidShape(0.0D, 14.0D, 9.666667D, 16.0D, 18.0D, 14.0D), field_220161_f);
-        field_220167_k = VoxelShapes.or(Block.makeCuboidShape(15.0D, 10.0D, 0.0D, 10.666667D, 14.0D, 16.0D), Block.makeCuboidShape(10.666667D, 12.0D, 0.0D, 6.333333D, 16.0D, 16.0D), Block.makeCuboidShape(6.333333D, 14.0D, 0.0D, 2.0D, 18.0D, 16.0D), field_220161_f);
-        field_220163_w = VoxelShapes.or(Block.makeCuboidShape(0.0D, 10.0D, 15.0D, 16.0D, 14.0D, 10.666667D), Block.makeCuboidShape(0.0D, 12.0D, 10.666667D, 16.0D, 16.0D, 6.333333D), Block.makeCuboidShape(0.0D, 14.0D, 6.333333D, 16.0D, 18.0D, 2.0D), field_220161_f);
-    }
-
-    private final WoodType woodType;
-    private final LazyLoadBase<TileEntityType<WoodenLecternTileEntity>> tileEntityType;
-
-    public WoodenLecternBlock(WoodType woodType, Supplier<TileEntityType<WoodenLecternTileEntity>> tileEntityType) {
-        super(Block.Properties.from(Blocks.LECTERN));
-        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(POWERED, false).with(HAS_BOOK, false));
-        this.woodType = woodType;
-        this.tileEntityType = new LazyLoadBase<>(tileEntityType);
-        this.setRegistryName(woodType.getModId(), woodType.getName() + "_lectern");
-    }
-
-    private static boolean tryPlaceBook(World world, BlockPos blockPos, BlockState blockState, ItemStack itemStack) {
-        if (!blockState.get(HAS_BOOK)) {
-            if (!world.isRemote) {
-                placeBook(world, blockPos, blockState, itemStack);
-            }
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private static void placeBook(World world, BlockPos blockPos, BlockState blockState, ItemStack itemStack) {
-        TileEntity tileEntity = world.getTileEntity(blockPos);
-        if (tileEntity instanceof WoodenLecternTileEntity) {
-            WoodenLecternTileEntity woodenLecternTileEntity = (WoodenLecternTileEntity) tileEntity;
-            woodenLecternTileEntity.func_214045_a(itemStack.split(1));
-            setHasBook(world, blockPos, blockState, true);
-            world.playSound(null, blockPos, SoundEvents.ITEM_BOOK_PUT, SoundCategory.BLOCKS, 1.0F, 1.0F);
-        }
-
-    }
-
-    public static void setHasBook(World world, BlockPos blockPos, BlockState blockState, boolean hasBook) {
-        world.setBlockState(blockPos, blockState.with(POWERED, false).with(HAS_BOOK, hasBook), 3);
-        notifyNeighbors(world, blockPos, blockState);
-    }
-
-    public static void pulse(World world, BlockPos blockPos, BlockState blockState) {
-        setPowered(world, blockPos, blockState, true);
-        world.getPendingBlockTicks().scheduleTick(blockPos, blockState.getBlock(), 2);
-        world.playEvent(1043, blockPos, 0);
-    }
-
-    private static void setPowered(World world, BlockPos blockPos, BlockState blockState, boolean powered) {
-        world.setBlockState(blockPos, blockState.with(POWERED, powered), 3);
-        notifyNeighbors(world, blockPos, blockState);
-    }
-
-    private static void notifyNeighbors(World world, BlockPos blockPos, BlockState blockState) {
-        world.notifyNeighborsOfStateChange(blockPos.down(), blockState.getBlock());
+        COLLISION_SHAPE = VoxelShapes.or(DEFAULT_SHAPE, field_220162_g);
+        FACING_WEST_SHAPE = VoxelShapes.or(Block.makeCuboidShape(1.0D, 10.0D, 0.0D, 5.333333D, 14.0D, 16.0D), Block.makeCuboidShape(5.333333D, 12.0D, 0.0D, 9.666667D, 16.0D, 16.0D), Block.makeCuboidShape(9.666667D, 14.0D, 0.0D, 14.0D, 18.0D, 16.0D), DEFAULT_SHAPE);
+        FACING_NORTH_SHAPE = VoxelShapes.or(Block.makeCuboidShape(0.0D, 10.0D, 1.0D, 16.0D, 14.0D, 5.333333D), Block.makeCuboidShape(0.0D, 12.0D, 5.333333D, 16.0D, 16.0D, 9.666667D), Block.makeCuboidShape(0.0D, 14.0D, 9.666667D, 16.0D, 18.0D, 14.0D), DEFAULT_SHAPE);
+        FACING_EAST_SHAPE = VoxelShapes.or(Block.makeCuboidShape(15.0D, 10.0D, 0.0D, 10.666667D, 14.0D, 16.0D), Block.makeCuboidShape(10.666667D, 12.0D, 0.0D, 6.333333D, 16.0D, 16.0D), Block.makeCuboidShape(6.333333D, 14.0D, 0.0D, 2.0D, 18.0D, 16.0D), DEFAULT_SHAPE);
+        FACING_SOUTH_SHAPE = VoxelShapes.or(Block.makeCuboidShape(0.0D, 10.0D, 15.0D, 16.0D, 14.0D, 10.666667D), Block.makeCuboidShape(0.0D, 12.0D, 10.666667D, 16.0D, 16.0D, 6.333333D), Block.makeCuboidShape(0.0D, 14.0D, 6.333333D, 16.0D, 18.0D, 2.0D), DEFAULT_SHAPE);
     }
 
     public TileEntityType<WoodenLecternTileEntity> getTileEntityType() {
@@ -134,9 +83,12 @@ public class WoodenLecternBlock extends ContainerBlock implements IWooden {
         return BlockRenderType.MODEL;
     }
 
-    @Override
-    public VoxelShape getRenderShape(BlockState blockState, IBlockReader blockReader, BlockPos blockPos) {
-        return field_220161_f;
+    public WoodenLecternBlock(WoodType woodType, Supplier<TileEntityType<WoodenLecternTileEntity>> tileEntityType) {
+        super(Block.Properties.from(Blocks.LECTERN));
+        this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(POWERED, false).with(HAS_BOOK, false));
+        this.woodType = woodType;
+        this.tileEntityType = new LazyLoadBase<>(tileEntityType);
+        this.setRegistryName(woodType.getModId(), woodType.getName() + "_" + WoodenBlockType.LECTERN.getName());
     }
 
     @Override
@@ -149,25 +101,25 @@ public class WoodenLecternBlock extends ContainerBlock implements IWooden {
         return this.getDefaultState().with(FACING, blockItemUseContext.getPlacementHorizontalFacing().getOpposite());
     }
 
-    @Override
-    public VoxelShape getCollisionShape(BlockState blockState, IBlockReader blockReader, BlockPos blockPos, ISelectionContext selectionContext) {
-        return field_220164_h;
+    private static boolean tryPlaceBook(World world, BlockPos blockPos, BlockState blockState, ItemStack itemStack) {
+        if (!blockState.get(HAS_BOOK)) {
+            if (!world.isRemote) {
+                placeBook(world, blockPos, blockState, itemStack);
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    @Override
-    public VoxelShape getShape(BlockState blockState, IBlockReader blockReader, BlockPos blockPos, ISelectionContext selectionContext) {
-        switch (blockState.get(FACING)) {
-            case NORTH:
-                return field_220166_j;
-            case SOUTH:
-                return field_220163_w;
-            case EAST:
-                return field_220167_k;
-            case WEST:
-                return field_220165_i;
-            default:
-                return field_220161_f;
+    private static void placeBook(World world, BlockPos blockPos, BlockState blockState, ItemStack itemStack) {
+        TileEntity tileEntity = world.getTileEntity(blockPos);
+        if (tileEntity instanceof WoodenLecternTileEntity) {
+            ((WoodenLecternTileEntity) tileEntity).func_214045_a(itemStack.split(1));
+            setHasBook(world, blockPos, blockState, true);
+            world.playSound(null, blockPos, SoundEvents.ITEM_BOOK_PUT, SoundCategory.BLOCKS, 1.0F, 1.0F);
         }
+
     }
 
     @Override
@@ -255,20 +207,9 @@ public class WoodenLecternBlock extends ContainerBlock implements IWooden {
         return 0;
     }
 
-    @Override
-    public boolean onBlockActivated(BlockState blockState, World world, BlockPos blockPos, PlayerEntity playerEntity, Hand hand, BlockRayTraceResult blockRayTraceResult) {
-        if (blockState.get(HAS_BOOK)) {
-            if (!world.isRemote) {
-                this.func_220152_a(world, blockPos, playerEntity);
-            }
-
-            return true;
-        } else {
-            if (hand == Hand.MAIN_HAND && playerEntity.getHeldItem(hand).getItem() instanceof WritableBookItem) {
-                return tryPlaceBook(world, blockPos, blockState, playerEntity.getHeldItem(hand));
-            }
-            return false;
-        }
+    public static void setHasBook(World world, BlockPos blockPos, BlockState blockState, boolean hasBook) {
+        world.setBlockState(blockPos, blockState.with(POWERED, false).with(HAS_BOOK, hasBook), 3);
+        notifyNeighbors(world, blockPos, blockState);
     }
 
     @Nullable
@@ -289,5 +230,64 @@ public class WoodenLecternBlock extends ContainerBlock implements IWooden {
     @Override
     public boolean allowsMovement(BlockState blockState, IBlockReader blockReader, BlockPos blockPos, PathType pathType) {
         return false;
+    }
+
+    public static void pulse(World world, BlockPos blockPos, BlockState blockState) {
+        setPowered(world, blockPos, blockState, true);
+        world.getPendingBlockTicks().scheduleTick(blockPos, blockState.getBlock(), 2);
+        world.playEvent(1043, blockPos, 0);
+    }
+
+    private static void setPowered(World world, BlockPos blockPos, BlockState blockState, boolean powered) {
+        world.setBlockState(blockPos, blockState.with(POWERED, powered), 3);
+        notifyNeighbors(world, blockPos, blockState);
+    }
+
+    private static void notifyNeighbors(World world, BlockPos blockPos, BlockState blockState) {
+        world.notifyNeighborsOfStateChange(blockPos.down(), blockState.getBlock());
+    }
+
+    @Override
+    public VoxelShape getRenderShape(BlockState blockState, IBlockReader blockReader, BlockPos blockPos) {
+        return DEFAULT_SHAPE;
+    }
+
+    @Override
+    public VoxelShape getCollisionShape(BlockState blockState, IBlockReader blockReader, BlockPos blockPos, ISelectionContext selectionContext) {
+        return COLLISION_SHAPE;
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState blockState, IBlockReader blockReader, BlockPos blockPos, ISelectionContext selectionContext) {
+        switch (blockState.get(FACING)) {
+            case NORTH:
+                return FACING_NORTH_SHAPE;
+            case SOUTH:
+                return FACING_SOUTH_SHAPE;
+            case EAST:
+                return FACING_EAST_SHAPE;
+            case WEST:
+                return FACING_WEST_SHAPE;
+            default:
+                return DEFAULT_SHAPE;
+        }
+    }
+
+    @Override
+    public boolean onBlockActivated(BlockState blockState, World world, BlockPos blockPos, PlayerEntity playerEntity, Hand hand, BlockRayTraceResult blockRayTraceResult) {
+        if (blockState.get(HAS_BOOK)) {
+            if (!world.isRemote) {
+                this.func_220152_a(world, blockPos, playerEntity);
+            }
+
+            return true;
+        } else {
+            ItemStack held = playerEntity.getHeldItem(hand);
+            Item item = held.getItem();
+            if (hand == Hand.MAIN_HAND && (item instanceof WritableBookItem || item instanceof WrittenBookItem)) {
+                return tryPlaceBook(world, blockPos, blockState, held);
+            }
+            return false;
+        }
     }
 }

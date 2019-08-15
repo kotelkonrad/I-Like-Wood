@@ -1,6 +1,8 @@
 package yamahari.ilikewood;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -13,10 +15,12 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.network.IContainerFactory;
 import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import yamahari.ilikewood.blocks.WoodenBarrelBlock;
+import yamahari.ilikewood.blocks.WoodenBlock;
 import yamahari.ilikewood.blocks.WoodenChestBlock;
 import yamahari.ilikewood.blocks.WoodenLecternBlock;
 import yamahari.ilikewood.config.ILikeWoodConfig;
@@ -26,6 +30,7 @@ import yamahari.ilikewood.objectholders.WoodenTileEntityTypes;
 import yamahari.ilikewood.objectholders.barrel.WoodenBarrelBlocks;
 import yamahari.ilikewood.objectholders.chest.WoodenChestBlocks;
 import yamahari.ilikewood.objectholders.lectern.WoodenLecternBlocks;
+import yamahari.ilikewood.objectholders.panels.WoodenPanelsBlocks;
 import yamahari.ilikewood.proxy.ClientProxy;
 import yamahari.ilikewood.proxy.CommonProxy;
 import yamahari.ilikewood.proxy.IProxy;
@@ -35,7 +40,7 @@ import yamahari.ilikewood.tilenentities.WoodenLecternTileEntity;
 import yamahari.ilikewood.tilenentities.renderer.WoodenChestItemStackTileEntityRenderer;
 import yamahari.ilikewood.util.Constants;
 import yamahari.ilikewood.util.WoodTypes;
-import yamahari.ilikewood.util.WoodenItemType;
+import yamahari.ilikewood.util.WoodenBlockType;
 
 import java.util.stream.Stream;
 
@@ -61,10 +66,12 @@ public class ILikeWood {
         @SubscribeEvent
         public static void onRegisterBlock(final RegistryEvent.Register<Block> event) {
             Stream.of(WoodTypes.ACACIA, WoodTypes.BIRCH, WoodTypes.DARK_OAK, WoodTypes.JUNGLE, WoodTypes.OAK, WoodTypes.SPRUCE)
-                    .forEach(woodType -> event.getRegistry().registerAll(
-                            new WoodenBarrelBlock(woodType, () -> WoodenTileEntityTypes.BARREL),
-                            new WoodenChestBlock(woodType, () -> WoodenTileEntityTypes.CHEST),
-                            new WoodenLecternBlock(woodType, () -> WoodenTileEntityTypes.LECTERN)
+                    .forEach(
+                            woodType -> event.getRegistry().registerAll(
+                                    new WoodenBarrelBlock(woodType, () -> WoodenTileEntityTypes.BARREL),
+                                    new WoodenChestBlock(woodType, () -> WoodenTileEntityTypes.CHEST),
+                                    new WoodenLecternBlock(woodType, () -> WoodenTileEntityTypes.LECTERN),
+                                    new WoodenBlock(woodType, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.f).sound(SoundType.WOOD)).setRegistryName(woodType.getName() + "_" + WoodenBlockType.PANELS.getName())
                             )
                     );
         }
@@ -75,13 +82,16 @@ public class ILikeWood {
             IForgeRegistry<Item> itemRegistry = event.getRegistry();
 
             Stream.of(WoodenBarrelBlocks.ACACIA, WoodenBarrelBlocks.BIRCH, WoodenBarrelBlocks.DARK_OAK, WoodenBarrelBlocks.JUNGLE, WoodenBarrelBlocks.OAK, WoodenBarrelBlocks.SPRUCE)
-                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenItemType.BARREL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.BARREL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
 
             Stream.of(WoodenChestBlocks.ACACIA, WoodenChestBlocks.BIRCH, WoodenChestBlocks.DARK_OAK, WoodenChestBlocks.JUNGLE, WoodenChestBlocks.OAK, WoodenChestBlocks.SPRUCE)
-                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenItemType.CHEST, (new Item.Properties()).group(ItemGroup.DECORATIONS).setTEISR(() -> WoodenChestItemStackTileEntityRenderer::new))));
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.CHEST, (new Item.Properties()).group(ItemGroup.DECORATIONS).setTEISR(() -> WoodenChestItemStackTileEntityRenderer::new))));
 
             Stream.of(WoodenLecternBlocks.ACACIA, WoodenLecternBlocks.BIRCH, WoodenLecternBlocks.DARK_OAK, WoodenLecternBlocks.JUNGLE, WoodenLecternBlocks.OAK, WoodenLecternBlocks.SPRUCE)
-                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenItemType.LECTERN, (new Item.Properties()).group(ItemGroup.REDSTONE))));
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.LECTERN, (new Item.Properties()).group(ItemGroup.REDSTONE))));
+
+            Stream.of(WoodenPanelsBlocks.ACACIA, WoodenPanelsBlocks.BIRCH, WoodenPanelsBlocks.DARK_OAK, WoodenPanelsBlocks.JUNGLE, WoodenPanelsBlocks.OAK, WoodenPanelsBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.PANELS, (new Item.Properties()).group(ItemGroup.BUILDING_BLOCKS))));
         }
 
         @SuppressWarnings("ConstantConditions")
@@ -105,10 +115,8 @@ public class ILikeWood {
 
         @SubscribeEvent
         public static void onRegisterContainerType(final RegistryEvent.Register<ContainerType<?>> event) {
-            IForgeRegistry<ContainerType<?>> containerRegistry = event.getRegistry();
-
-            containerRegistry.registerAll(
-                    new ContainerType<>((id, x) -> new WoodenLecternContainer(id)).setRegistryName("wooden_lectern_container")
+            event.getRegistry().registerAll(
+                    new ContainerType<>((IContainerFactory<WoodenLecternContainer>) (windowId, inv, data) -> new WoodenLecternContainer(windowId)).setRegistryName("wooden_lectern")
             );
         }
     }

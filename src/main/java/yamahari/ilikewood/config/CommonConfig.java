@@ -189,6 +189,13 @@ public class CommonConfig {
     public final ForgeConfigSpec.IntValue OAK_LECTERN_BURN_TIME;
     public final ForgeConfigSpec.IntValue SPRUCE_LECTERN_BURN_TIME;
 
+    public final ForgeConfigSpec.IntValue ACACIA_PANELS_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_PANELS_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_PANELS_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_PANELS_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_PANELS_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_PANELS_BURN_TIME;
+
     CommonConfig(ForgeConfigSpec.Builder builder) {
         builder.comment("Item Configuration").push("item");
         builder.comment("Burn Time").push("burn_time");
@@ -257,6 +264,28 @@ public class CommonConfig {
                 .defineInRange("spruce", 300, -1, Integer.MAX_VALUE);
 
         builder.pop(); // lectern
+
+        builder.comment("Panels").push("panels");
+
+        this.ACACIA_PANELS_BURN_TIME = builder
+                .defineInRange("acacia", 300, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_PANELS_BURN_TIME = builder
+                .defineInRange("birch", 300, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_PANELS_BURN_TIME = builder
+                .defineInRange("dark_oak", 300, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_PANELS_BURN_TIME = builder
+                .defineInRange("jungle", 300, -1, Integer.MAX_VALUE);
+
+        this.OAK_PANELS_BURN_TIME = builder
+                .defineInRange("oak", 300, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_PANELS_BURN_TIME = builder
+                .defineInRange("spruce", 300, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // panels
         builder.pop(); // burn_time
         builder.pop(); // item
 

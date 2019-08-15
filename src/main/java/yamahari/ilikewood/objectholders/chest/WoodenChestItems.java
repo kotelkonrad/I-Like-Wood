@@ -1,7 +1,7 @@
 package yamahari.ilikewood.objectholders.chest;
 
-import net.minecraft.item.Item;
 import net.minecraftforge.registries.ObjectHolder;
+import yamahari.ilikewood.items.WoodenBlockItem;
 import yamahari.ilikewood.util.Constants;
 
 @SuppressWarnings("unused")
@@ -9,20 +9,20 @@ import yamahari.ilikewood.util.Constants;
 public class WoodenChestItems {
 
     @ObjectHolder("acacia_chest")
-    public static final Item ACACIA = null;
+    public static final WoodenBlockItem ACACIA = null;
 
     @ObjectHolder("birch_chest")
-    public static final Item BIRCH = null;
+    public static final WoodenBlockItem BIRCH = null;
 
     @ObjectHolder("dark_oak_chest")
-    public static final Item DARK_OAK = null;
+    public static final WoodenBlockItem DARK_OAK = null;
 
     @ObjectHolder("jungle_chest")
-    public static final Item JUNGLE = null;
+    public static final WoodenBlockItem JUNGLE = null;
 
     @ObjectHolder("oak_chest")
-    public static final Item OAK = null;
+    public static final WoodenBlockItem OAK = null;
 
     @ObjectHolder("spruce_chest")
-    public static final Item SPRUCE = null;
+    public static final WoodenBlockItem SPRUCE = null;
 }

@@ -1,4 +1,4 @@
-package yamahari.ilikewood.objectholders.lectern;
+package yamahari.ilikewood.objectholders;
 
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraftforge.registries.ObjectHolder;
@@ -6,8 +6,7 @@ import yamahari.ilikewood.container.WoodenLecternContainer;
 import yamahari.ilikewood.util.Constants;
 
 @ObjectHolder(Constants.MOD_ID)
-public class WoodenLecternContainers {
-
-    @ObjectHolder("wooden_lectern_container")
-    public static final ContainerType<WoodenLecternContainer> WOODEN = null;
+public class WoodenContainerTypes {
+    @ObjectHolder("wooden_lectern")
+    public static final ContainerType<WoodenLecternContainer> LECTERN = null;
 }

@@ -8,17 +8,21 @@ public class WoodTypes {
             "acacia",
             Constants.MOD_ID,
             ImmutableMap.of(
-                    WoodenItemType.BARREL,
+                    WoodenBlockType.BARREL,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.ACACIA_BARREL_BURN_TIME::get
                     ),
-                    WoodenItemType.CHEST,
+                    WoodenBlockType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.ACACIA_CHEST_BURN_TIME::get
                     ),
-                    WoodenItemType.LECTERN,
+                    WoodenBlockType.LECTERN,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.ACACIA_LECTERN_BURN_TIME::get
+                    ),
+                    WoodenBlockType.PANELS,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.ACACIA_PANELS_BURN_TIME::get
                     )
             )
     );
@@ -27,17 +31,21 @@ public class WoodTypes {
             "birch",
             Constants.MOD_ID,
             ImmutableMap.of(
-                    WoodenItemType.BARREL,
+                    WoodenBlockType.BARREL,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.BIRCH_BARREL_BURN_TIME::get
                     ),
-                    WoodenItemType.CHEST,
+                    WoodenBlockType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.BIRCH_CHEST_BURN_TIME::get
                     ),
-                    WoodenItemType.LECTERN,
+                    WoodenBlockType.LECTERN,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.BIRCH_LECTERN_BURN_TIME::get
+                    ),
+                    WoodenBlockType.PANELS,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.BIRCH_PANELS_BURN_TIME::get
                     )
             )
     );
@@ -46,17 +54,21 @@ public class WoodTypes {
             "dark_oak",
             Constants.MOD_ID,
             ImmutableMap.of(
-                    WoodenItemType.BARREL,
+                    WoodenBlockType.BARREL,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_BARREL_BURN_TIME::get
                     ),
-                    WoodenItemType.CHEST,
+                    WoodenBlockType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_CHEST_BURN_TIME::get
                     ),
-                    WoodenItemType.LECTERN,
+                    WoodenBlockType.LECTERN,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_LECTERN_BURN_TIME::get
+                    ),
+                    WoodenBlockType.PANELS,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_PANELS_BURN_TIME::get
                     )
             )
     );
@@ -65,17 +77,21 @@ public class WoodTypes {
             "jungle",
             Constants.MOD_ID,
             ImmutableMap.of(
-                    WoodenItemType.BARREL,
+                    WoodenBlockType.BARREL,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.JUNGLE_BARREL_BURN_TIME::get
                     ),
-                    WoodenItemType.CHEST,
+                    WoodenBlockType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.JUNGLE_CHEST_BURN_TIME::get
                     ),
-                    WoodenItemType.LECTERN,
+                    WoodenBlockType.LECTERN,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.JUNGLE_LECTERN_BURN_TIME::get
+                    ),
+                    WoodenBlockType.PANELS,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.JUNGLE_PANELS_BURN_TIME::get
                     )
             )
     );
@@ -84,17 +100,21 @@ public class WoodTypes {
             "oak",
             Constants.MOD_ID,
             ImmutableMap.of(
-                    WoodenItemType.BARREL,
+                    WoodenBlockType.BARREL,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.OAK_BARREL_BURN_TIME::get
                     ),
-                    WoodenItemType.CHEST,
+                    WoodenBlockType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.OAK_CHEST_BURN_TIME::get
                     ),
-                    WoodenItemType.LECTERN,
+                    WoodenBlockType.LECTERN,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.OAK_LECTERN_BURN_TIME::get
+                    ),
+                    WoodenBlockType.PANELS,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.OAK_PANELS_BURN_TIME::get
                     )
             )
     );
@@ -103,17 +123,21 @@ public class WoodTypes {
             "spruce",
             Constants.MOD_ID,
             ImmutableMap.of(
-                    WoodenItemType.BARREL,
+                    WoodenBlockType.BARREL,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.SPRUCE_BARREL_BURN_TIME::get
                     ),
-                    WoodenItemType.CHEST,
+                    WoodenBlockType.CHEST,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.SPRUCE_CHEST_BURN_TIME::get
                     ),
-                    WoodenItemType.LECTERN,
+                    WoodenBlockType.LECTERN,
                     new WoodType.WoodTypeProperties(
                             ILikeWoodConfig.COMMON_CONFIG.SPRUCE_LECTERN_BURN_TIME::get
+                    ),
+                    WoodenBlockType.PANELS,
+                    new WoodType.WoodTypeProperties(
+                            ILikeWoodConfig.COMMON_CONFIG.SPRUCE_PANELS_BURN_TIME::get
                     )
             )
     );

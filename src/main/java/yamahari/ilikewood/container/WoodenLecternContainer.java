@@ -10,7 +10,7 @@ import net.minecraft.util.IIntArray;
 import net.minecraft.util.IntArray;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import yamahari.ilikewood.objectholders.lectern.WoodenLecternContainers;
+import yamahari.ilikewood.objectholders.WoodenContainerTypes;
 
 @SuppressWarnings("NullableProblems")
 public class WoodenLecternContainer extends Container {
@@ -22,7 +22,7 @@ public class WoodenLecternContainer extends Container {
     }
 
     public WoodenLecternContainer(int id, IInventory lecternInventory, IIntArray p_i50076_3_) {
-        super(WoodenLecternContainers.WOODEN, id);
+        super(WoodenContainerTypes.LECTERN, id);
         assertInventorySize(lecternInventory, 1);
         assertIntArraySize(p_i50076_3_, 1);
         this.inventory = lecternInventory;
