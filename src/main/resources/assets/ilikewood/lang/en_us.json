@@ -58,5 +58,11 @@
   "block.ilikewood.spruce_composter": "Spruce Composter",
   "block.ilikewood.birch_composter": "Birch Composter",
   "block.ilikewood.jungle_composter": "Jungle Composter",
-  "block.ilikewood.acacia_composter": "Acacia Composter"
+  "block.ilikewood.acacia_composter": "Acacia Composter",
+  "block.ilikewood.oak_wall": "Oak Wall",
+  "block.ilikewood.dark_oak_wall": "Dark Oak Wall",
+  "block.ilikewood.spruce_wall": "Spruce Wall",
+  "block.ilikewood.birch_wall": "Birch Wall",
+  "block.ilikewood.jungle_wall": "Jungle Wall",
+  "block.ilikewood.acacia_wall": "Acacia Wall"
 }

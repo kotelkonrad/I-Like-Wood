@@ -8,7 +8,8 @@ public enum WoodenBlockType implements IStringSerializable {
     CHEST("chest"),
     COMPOSTER("composter"),
     LECTERN("lectern"),
-    PANELS("panels");
+    PANELS("panels"),
+    WALL("wall");
 
     private final String name;
 

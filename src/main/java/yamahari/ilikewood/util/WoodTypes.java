@@ -14,6 +14,7 @@ public class WoodTypes {
                     .put(WoodenBlockType.PANELS, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.ACACIA_PANELS_BURN_TIME::get))
                     .put(WoodenBlockType.BOOKSHELF, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.ACACIA_BOOKSHELF_BURN_TIME::get))
                     .put(WoodenBlockType.COMPOSTER, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.ACACIA_COMPOSTER_BURN_TIME::get))
+                    .put(WoodenBlockType.WALL, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.ACACIA_WALL_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.COMMON_CONFIG.ACACIA_ENCHANTING_POWER_BONUS::get
     );
@@ -28,6 +29,7 @@ public class WoodTypes {
                     .put(WoodenBlockType.PANELS, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.BIRCH_PANELS_BURN_TIME::get))
                     .put(WoodenBlockType.BOOKSHELF, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.BIRCH_BOOKSHELF_BURN_TIME::get))
                     .put(WoodenBlockType.COMPOSTER, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.BIRCH_COMPOSTER_BURN_TIME::get))
+                    .put(WoodenBlockType.WALL, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.BIRCH_WALL_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.COMMON_CONFIG.BIRCH_ENCHANTING_POWER_BONUS::get
     );
@@ -42,6 +44,7 @@ public class WoodTypes {
                     .put(WoodenBlockType.PANELS, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_PANELS_BURN_TIME::get))
                     .put(WoodenBlockType.BOOKSHELF, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_BOOKSHELF_BURN_TIME::get))
                     .put(WoodenBlockType.COMPOSTER, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_COMPOSTER_BURN_TIME::get))
+                    .put(WoodenBlockType.WALL, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_WALL_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.COMMON_CONFIG.DARK_OAK_ENCHANTING_POWER_BONUS::get
     );
@@ -56,6 +59,7 @@ public class WoodTypes {
                     .put(WoodenBlockType.PANELS, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.JUNGLE_PANELS_BURN_TIME::get))
                     .put(WoodenBlockType.BOOKSHELF, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.JUNGLE_BOOKSHELF_BURN_TIME::get))
                     .put(WoodenBlockType.COMPOSTER, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.JUNGLE_COMPOSTER_BURN_TIME::get))
+                    .put(WoodenBlockType.WALL, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.JUNGLE_WALL_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.COMMON_CONFIG.JUNGLE_ENCHANTING_POWER_BONUS::get
     );
@@ -70,6 +74,7 @@ public class WoodTypes {
                     .put(WoodenBlockType.PANELS, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.OAK_PANELS_BURN_TIME::get))
                     .put(WoodenBlockType.BOOKSHELF, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.OAK_BOOKSHELF_BURN_TIME::get))
                     .put(WoodenBlockType.COMPOSTER, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.OAK_COMPOSTER_BURN_TIME::get))
+                    .put(WoodenBlockType.WALL, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.OAK_WALL_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.COMMON_CONFIG.OAK_ENCHANTING_POWER_BONUS::get
     );
@@ -84,6 +89,7 @@ public class WoodTypes {
                     .put(WoodenBlockType.PANELS, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.SPRUCE_PANELS_BURN_TIME::get))
                     .put(WoodenBlockType.BOOKSHELF, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.SPRUCE_BOOKSHELF_BURN_TIME::get))
                     .put(WoodenBlockType.COMPOSTER, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.SPRUCE_COMPOSTER_BURN_TIME::get))
+                    .put(WoodenBlockType.WALL, new WoodType.WoodTypeProperties(ILikeWoodConfig.COMMON_CONFIG.SPRUCE_WALL_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.COMMON_CONFIG.SPRUCE_ENCHANTING_POWER_BONUS::get
     );

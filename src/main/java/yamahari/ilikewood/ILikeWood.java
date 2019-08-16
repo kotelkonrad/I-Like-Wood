@@ -30,6 +30,7 @@ import yamahari.ilikewood.objectholders.chest.WoodenChestBlocks;
 import yamahari.ilikewood.objectholders.composter.WoodenComposterBlocks;
 import yamahari.ilikewood.objectholders.lectern.WoodenLecternBlocks;
 import yamahari.ilikewood.objectholders.panels.WoodenPanelsBlocks;
+import yamahari.ilikewood.objectholders.wall.WoodenWallBlocks;
 import yamahari.ilikewood.proxy.ClientProxy;
 import yamahari.ilikewood.proxy.CommonProxy;
 import yamahari.ilikewood.proxy.IProxy;
@@ -72,7 +73,8 @@ public class ILikeWood {
                                     new WoodenLecternBlock(woodType, () -> WoodenTileEntityTypes.LECTERN),
                                     new WoodenBlock(woodType, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.f).sound(SoundType.WOOD)).setRegistryName(woodType.getName() + "_" + WoodenBlockType.PANELS.getName()),
                                     new WoodenBookshelfBlock(woodType),
-                                    new WoodenComposterBlock(woodType)
+                                    new WoodenComposterBlock(woodType),
+                                    new WoodenWallBlock(woodType)
                             )
                     );
         }
@@ -99,6 +101,9 @@ public class ILikeWood {
 
             Stream.of(WoodenComposterBlocks.ACACIA, WoodenComposterBlocks.BIRCH, WoodenComposterBlocks.DARK_OAK, WoodenComposterBlocks.JUNGLE, WoodenComposterBlocks.OAK, WoodenComposterBlocks.SPRUCE)
                     .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.COMPOSTER, (new Item.Properties()).group(ItemGroup.MISC))));
+
+            Stream.of(WoodenWallBlocks.ACACIA, WoodenWallBlocks.BIRCH, WoodenWallBlocks.DARK_OAK, WoodenWallBlocks.JUNGLE, WoodenWallBlocks.OAK, WoodenWallBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.WALL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
         }
 
         @SuppressWarnings("ConstantConditions")
