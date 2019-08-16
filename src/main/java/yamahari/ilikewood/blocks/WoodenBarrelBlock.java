@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 import yamahari.ilikewood.tilenentities.WoodenBarrelTileEntity;
 import yamahari.ilikewood.util.IWooden;
 import yamahari.ilikewood.util.WoodType;
-import yamahari.ilikewood.util.WoodenBlockType;
+import yamahari.ilikewood.util.WoodenObjectType;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -34,7 +34,7 @@ public class WoodenBarrelBlock extends BarrelBlock implements IWooden {
         super(Block.Properties.from(Blocks.BARREL));
         this.woodType = woodType;
         this.tileEntityType = new LazyLoadBase<>(tileEntityType);
-        this.setRegistryName(this.woodType.getModId(), this.woodType.getName() + "_" + WoodenBlockType.BARREL.getName());
+        this.setRegistryName(this.woodType.getModId(), this.woodType.getName() + "_" + WoodenObjectType.BARREL.getName());
     }
 
     @Override

@@ -6,21 +6,21 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import yamahari.ilikewood.util.IWooden;
 import yamahari.ilikewood.util.WoodType;
-import yamahari.ilikewood.util.WoodenBlockType;
+import yamahari.ilikewood.util.WoodenObjectType;
 
 import java.util.Objects;
 
 public class WoodenBlockItem extends BlockItem implements IWooden {
-    private final WoodenBlockType woodenBlockType;
+    private final WoodenObjectType woodenObjectType;
 
-    public WoodenBlockItem(Block block, WoodenBlockType woodenBlockType, Item.Properties properties) {
+    public WoodenBlockItem(Block block, WoodenObjectType woodenObjectType, Item.Properties properties) {
         super(block, properties);
-        this.woodenBlockType = woodenBlockType;
+        this.woodenObjectType = woodenObjectType;
         this.setRegistryName(Objects.requireNonNull(block.getRegistryName()));
     }
 
-    public WoodenBlockType getWoodenBlockType() {
-        return this.woodenBlockType;
+    public WoodenObjectType getWoodenObjectType() {
+        return this.woodenObjectType;
     }
 
     @Override
@@ -30,6 +30,6 @@ public class WoodenBlockItem extends BlockItem implements IWooden {
 
     @Override
     public int getBurnTime(ItemStack itemStack) {
-        return this.getWoodType().getWoodTypeProperties(this.getWoodenBlockType()).getBurnTime();
+        return this.getWoodType().getWoodTypeProperties(this.getWoodenObjectType()).getBurnTime();
     }
 }

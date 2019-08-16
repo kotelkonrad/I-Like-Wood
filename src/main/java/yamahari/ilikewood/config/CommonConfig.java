@@ -217,6 +217,20 @@ public class CommonConfig {
     public final ForgeConfigSpec.IntValue OAK_WALL_BURN_TIME;
     public final ForgeConfigSpec.IntValue SPRUCE_WALL_BURN_TIME;
 
+    public final ForgeConfigSpec.IntValue ACACIA_LADDER_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_LADDER_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_LADDER_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_LADDER_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_LADDER_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_LADDER_BURN_TIME;
+
+    public final ForgeConfigSpec.IntValue ACACIA_STICK_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_STICK_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_STICK_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_STICK_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_STICK_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_STICK_BURN_TIME;
+
     public final ForgeConfigSpec.DoubleValue ACACIA_ENCHANTING_POWER_BONUS;
     public final ForgeConfigSpec.DoubleValue BIRCH_ENCHANTING_POWER_BONUS;
     public final ForgeConfigSpec.DoubleValue DARK_OAK_ENCHANTING_POWER_BONUS;
@@ -230,22 +244,22 @@ public class CommonConfig {
         builder.comment("Enchanting Power Bonus").push("enchanting_power_bonus");
 
         this.ACACIA_ENCHANTING_POWER_BONUS = builder
-                .defineInRange("acacia", 1.0, 0.0, Float.MAX_VALUE);
+                .defineInRange("acacia", 1.0, 0.0, 15.0);
 
         this.BIRCH_ENCHANTING_POWER_BONUS = builder
-                .defineInRange("birch", 1.0, 0.0, Float.MAX_VALUE);
+                .defineInRange("birch", 1.0, 0.0, 15.0);
 
         this.DARK_OAK_ENCHANTING_POWER_BONUS = builder
-                .defineInRange("dark_oak", 1.0, 0.0, Float.MAX_VALUE);
+                .defineInRange("dark_oak", 1.0, 0.0, 15.0);
 
         this.JUNGLE_ENCHANTING_POWER_BONUS = builder
-                .defineInRange("jungle", 1.0, 0.0, Float.MAX_VALUE);
+                .defineInRange("jungle", 1.0, 0.0, 15.0);
 
         this.OAK_ENCHANTING_POWER_BONUS = builder
-                .defineInRange("oak", 1.0, 0.0, Float.MAX_VALUE);
+                .defineInRange("oak", 1.0, 0.0, 15.0);
 
         this.SPRUCE_ENCHANTING_POWER_BONUS = builder
-                .defineInRange("spruce", 1.0, 0.0, Float.MAX_VALUE);
+                .defineInRange("spruce", 1.0, 0.0, 15.0);
 
         builder.pop(); // enchanting_power_bonus
         builder.pop(); // block
@@ -405,6 +419,50 @@ public class CommonConfig {
                 .defineInRange("spruce", 300, -1, Integer.MAX_VALUE);
 
         builder.pop(); // wall
+
+        builder.comment("Ladder").push("ladder");
+
+        this.ACACIA_LADDER_BURN_TIME = builder
+                .defineInRange("acacia", 300, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_LADDER_BURN_TIME = builder
+                .defineInRange("birch", 300, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_LADDER_BURN_TIME = builder
+                .defineInRange("dark_oak", 300, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_LADDER_BURN_TIME = builder
+                .defineInRange("jungle", 300, -1, Integer.MAX_VALUE);
+
+        this.OAK_LADDER_BURN_TIME = builder
+                .defineInRange("oak", 300, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_LADDER_BURN_TIME = builder
+                .defineInRange("spruce", 300, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // ladder
+
+        builder.comment("Stick").push("stick");
+
+        this.ACACIA_STICK_BURN_TIME = builder
+                .defineInRange("acacia", 100, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_STICK_BURN_TIME = builder
+                .defineInRange("birch", 100, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_STICK_BURN_TIME = builder
+                .defineInRange("dark_oak", 100, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_STICK_BURN_TIME = builder
+                .defineInRange("jungle", 100, -1, Integer.MAX_VALUE);
+
+        this.OAK_STICK_BURN_TIME = builder
+                .defineInRange("oak", 100, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_STICK_BURN_TIME = builder
+                .defineInRange("spruce", 100, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // stick
         builder.pop(); // burn_time
         builder.pop(); // item
 

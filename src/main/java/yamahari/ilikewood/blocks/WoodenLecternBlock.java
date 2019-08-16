@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 import yamahari.ilikewood.tilenentities.WoodenLecternTileEntity;
 import yamahari.ilikewood.util.IWooden;
 import yamahari.ilikewood.util.WoodType;
-import yamahari.ilikewood.util.WoodenBlockType;
+import yamahari.ilikewood.util.WoodenObjectType;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -88,7 +88,7 @@ public class WoodenLecternBlock extends ContainerBlock implements IWooden {
         this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(POWERED, false).with(HAS_BOOK, false));
         this.woodType = woodType;
         this.tileEntityType = new LazyLoadBase<>(tileEntityType);
-        this.setRegistryName(woodType.getModId(), woodType.getName() + "_" + WoodenBlockType.LECTERN.getName());
+        this.setRegistryName(woodType.getModId(), woodType.getName() + "_" + WoodenObjectType.LECTERN.getName());
     }
 
     @Override

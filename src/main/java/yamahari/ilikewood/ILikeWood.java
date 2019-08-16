@@ -23,11 +23,13 @@ import yamahari.ilikewood.blocks.*;
 import yamahari.ilikewood.config.ILikeWoodConfig;
 import yamahari.ilikewood.container.WoodenLecternContainer;
 import yamahari.ilikewood.items.WoodenBlockItem;
+import yamahari.ilikewood.items.WoodenItem;
 import yamahari.ilikewood.objectholders.WoodenTileEntityTypes;
 import yamahari.ilikewood.objectholders.barrel.WoodenBarrelBlocks;
 import yamahari.ilikewood.objectholders.bookshelf.WoodenBookshelfBlocks;
 import yamahari.ilikewood.objectholders.chest.WoodenChestBlocks;
 import yamahari.ilikewood.objectholders.composter.WoodenComposterBlocks;
+import yamahari.ilikewood.objectholders.ladder.WoodenLadderBlocks;
 import yamahari.ilikewood.objectholders.lectern.WoodenLecternBlocks;
 import yamahari.ilikewood.objectholders.panels.WoodenPanelsBlocks;
 import yamahari.ilikewood.objectholders.wall.WoodenWallBlocks;
@@ -40,7 +42,7 @@ import yamahari.ilikewood.tilenentities.WoodenLecternTileEntity;
 import yamahari.ilikewood.tilenentities.renderer.WoodenChestItemStackTileEntityRenderer;
 import yamahari.ilikewood.util.Constants;
 import yamahari.ilikewood.util.WoodTypes;
-import yamahari.ilikewood.util.WoodenBlockType;
+import yamahari.ilikewood.util.WoodenObjectType;
 
 import java.util.stream.Stream;
 
@@ -71,10 +73,11 @@ public class ILikeWood {
                                     new WoodenBarrelBlock(woodType, () -> WoodenTileEntityTypes.BARREL),
                                     new WoodenChestBlock(woodType, () -> WoodenTileEntityTypes.CHEST),
                                     new WoodenLecternBlock(woodType, () -> WoodenTileEntityTypes.LECTERN),
-                                    new WoodenBlock(woodType, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.f).sound(SoundType.WOOD)).setRegistryName(woodType.getName() + "_" + WoodenBlockType.PANELS.getName()),
+                                    new WoodenBlock(woodType, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.f).sound(SoundType.WOOD)).setRegistryName(woodType.getName() + "_" + WoodenObjectType.PANELS.getName()),
                                     new WoodenBookshelfBlock(woodType),
                                     new WoodenComposterBlock(woodType),
-                                    new WoodenWallBlock(woodType)
+                                    new WoodenWallBlock(woodType),
+                                    new WoodenLadderBlock(woodType)
                             )
                     );
         }
@@ -85,25 +88,31 @@ public class ILikeWood {
             IForgeRegistry<Item> itemRegistry = event.getRegistry();
 
             Stream.of(WoodenBarrelBlocks.ACACIA, WoodenBarrelBlocks.BIRCH, WoodenBarrelBlocks.DARK_OAK, WoodenBarrelBlocks.JUNGLE, WoodenBarrelBlocks.OAK, WoodenBarrelBlocks.SPRUCE)
-                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.BARREL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.BARREL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
 
             Stream.of(WoodenChestBlocks.ACACIA, WoodenChestBlocks.BIRCH, WoodenChestBlocks.DARK_OAK, WoodenChestBlocks.JUNGLE, WoodenChestBlocks.OAK, WoodenChestBlocks.SPRUCE)
-                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.CHEST, (new Item.Properties()).group(ItemGroup.DECORATIONS).setTEISR(() -> WoodenChestItemStackTileEntityRenderer::new))));
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.CHEST, (new Item.Properties()).group(ItemGroup.DECORATIONS).setTEISR(() -> WoodenChestItemStackTileEntityRenderer::new))));
 
             Stream.of(WoodenLecternBlocks.ACACIA, WoodenLecternBlocks.BIRCH, WoodenLecternBlocks.DARK_OAK, WoodenLecternBlocks.JUNGLE, WoodenLecternBlocks.OAK, WoodenLecternBlocks.SPRUCE)
-                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.LECTERN, (new Item.Properties()).group(ItemGroup.REDSTONE))));
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.LECTERN, (new Item.Properties()).group(ItemGroup.REDSTONE))));
 
             Stream.of(WoodenPanelsBlocks.ACACIA, WoodenPanelsBlocks.BIRCH, WoodenPanelsBlocks.DARK_OAK, WoodenPanelsBlocks.JUNGLE, WoodenPanelsBlocks.OAK, WoodenPanelsBlocks.SPRUCE)
-                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.PANELS, (new Item.Properties()).group(ItemGroup.BUILDING_BLOCKS))));
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.PANELS, (new Item.Properties()).group(ItemGroup.BUILDING_BLOCKS))));
 
             Stream.of(WoodenBookshelfBlocks.ACACIA, WoodenBookshelfBlocks.BIRCH, WoodenBookshelfBlocks.DARK_OAK, WoodenBookshelfBlocks.JUNGLE, WoodenBookshelfBlocks.OAK, WoodenBookshelfBlocks.SPRUCE)
-                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.BOOKSHELF, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.BOOKSHELF, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
 
             Stream.of(WoodenComposterBlocks.ACACIA, WoodenComposterBlocks.BIRCH, WoodenComposterBlocks.DARK_OAK, WoodenComposterBlocks.JUNGLE, WoodenComposterBlocks.OAK, WoodenComposterBlocks.SPRUCE)
-                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.COMPOSTER, (new Item.Properties()).group(ItemGroup.MISC))));
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.COMPOSTER, (new Item.Properties()).group(ItemGroup.MISC))));
 
             Stream.of(WoodenWallBlocks.ACACIA, WoodenWallBlocks.BIRCH, WoodenWallBlocks.DARK_OAK, WoodenWallBlocks.JUNGLE, WoodenWallBlocks.OAK, WoodenWallBlocks.SPRUCE)
-                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenBlockType.WALL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.WALL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+
+            Stream.of(WoodenLadderBlocks.ACACIA, WoodenLadderBlocks.BIRCH, WoodenLadderBlocks.DARK_OAK, WoodenLadderBlocks.JUNGLE, WoodenLadderBlocks.OAK, WoodenLadderBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.WALL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+
+            Stream.of(WoodTypes.ACACIA, WoodTypes.BIRCH, WoodTypes.DARK_OAK, WoodTypes.JUNGLE, WoodTypes.OAK, WoodTypes.SPRUCE)
+                    .forEach(woodType -> itemRegistry.register(new WoodenItem(woodType, WoodenObjectType.STICK, (new Item.Properties()).group(ItemGroup.MATERIALS)).setRegistryName(woodType.getName() + "_" + WoodenObjectType.STICK.getName())));
         }
 
         @SuppressWarnings("ConstantConditions")

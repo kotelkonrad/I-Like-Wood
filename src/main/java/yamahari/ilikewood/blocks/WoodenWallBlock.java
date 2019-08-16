@@ -6,7 +6,7 @@ import net.minecraft.block.WallBlock;
 import net.minecraft.block.material.Material;
 import yamahari.ilikewood.util.IWooden;
 import yamahari.ilikewood.util.WoodType;
-import yamahari.ilikewood.util.WoodenBlockType;
+import yamahari.ilikewood.util.WoodenObjectType;
 
 public class WoodenWallBlock extends WallBlock implements IWooden {
     private final WoodType woodType;
@@ -14,7 +14,7 @@ public class WoodenWallBlock extends WallBlock implements IWooden {
     public WoodenWallBlock(WoodType woodType) {
         super(Block.Properties.create(Material.WOOD).hardnessAndResistance(2.0f).sound(SoundType.WOOD));
         this.woodType = woodType;
-        this.setRegistryName(this.getWoodType().getModId(), this.getWoodType().getName() + "_" + WoodenBlockType.WALL.getName());
+        this.setRegistryName(this.getWoodType().getModId(), this.getWoodType().getName() + "_" + WoodenObjectType.WALL.getName());
     }
 
     @Override

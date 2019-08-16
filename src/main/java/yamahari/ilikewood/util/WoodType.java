@@ -9,10 +9,10 @@ import java.util.function.Supplier;
 public class WoodType implements IStringSerializable {
     private final String name;
     private final String modId;
-    private final Map<WoodenBlockType, WoodTypeProperties> woodTypeProperties;
+    private final Map<WoodenObjectType, WoodTypeProperties> woodTypeProperties;
     private final Supplier<Double> enchantingPowerBonus;
 
-    public WoodType(String name, String modId, Map<WoodenBlockType, WoodTypeProperties> woodTypeProperties, Supplier<Double> enchantingPowerBonus) {
+    public WoodType(String name, String modId, Map<WoodenObjectType, WoodTypeProperties> woodTypeProperties, Supplier<Double> enchantingPowerBonus) {
         this.name = name;
         this.modId = modId;
         this.woodTypeProperties = woodTypeProperties;
@@ -28,8 +28,8 @@ public class WoodType implements IStringSerializable {
         return modId;
     }
 
-    public WoodTypeProperties getWoodTypeProperties(WoodenBlockType woodenBlockType) {
-        return this.woodTypeProperties.getOrDefault(woodenBlockType, new WoodTypeProperties(() -> -1));
+    public WoodTypeProperties getWoodTypeProperties(WoodenObjectType woodenObjectType) {
+        return this.woodTypeProperties.getOrDefault(woodenObjectType, new WoodTypeProperties(() -> -1));
     }
 
     public float getEnchantingPowerBonus() {

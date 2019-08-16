@@ -7,12 +7,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 import yamahari.ilikewood.util.WoodType;
-import yamahari.ilikewood.util.WoodenBlockType;
+import yamahari.ilikewood.util.WoodenObjectType;
 
 public class WoodenBookshelfBlock extends WoodenBlock {
     public WoodenBookshelfBlock(WoodType woodType) {
         super(woodType, Block.Properties.create(Material.WOOD).hardnessAndResistance(1.5f).sound(SoundType.WOOD));
-        this.setRegistryName(this.getWoodType().getModId(), this.getWoodType().getName() + "_" + WoodenBlockType.BOOKSHELF.getName());
+        this.setRegistryName(this.getWoodType().getModId(), this.getWoodType().getName() + "_" + WoodenObjectType.BOOKSHELF.getName());
     }
 
     @Override

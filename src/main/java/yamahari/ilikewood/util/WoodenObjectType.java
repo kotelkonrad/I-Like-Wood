@@ -2,18 +2,20 @@ package yamahari.ilikewood.util;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum WoodenBlockType implements IStringSerializable {
+public enum WoodenObjectType implements IStringSerializable {
     BARREL("barrel"),
     BOOKSHELF("bookshelf"),
     CHEST("chest"),
     COMPOSTER("composter"),
+    LADDER("ladder"),
     LECTERN("lectern"),
     PANELS("panels"),
+    STICK("stick"),
     WALL("wall");
 
     private final String name;
 
-    WoodenBlockType(String name) {
+    WoodenObjectType(String name) {
         this.name = name;
     }
 
