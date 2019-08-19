@@ -59,10 +59,12 @@ public class ILikeWood {
 
     private static final IProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 
-    public static Boolean COMMON_CONFIG_LOADED = false;
-    public static Boolean CLIENT_CONFIG_LOADED = false;
+    public static boolean COMMON_CONFIG_LOADED = false;
+    public static boolean CLIENT_CONFIG_LOADED = false;
+    public static boolean SERVER_CONFIG_LOADED = false;
 
     public ILikeWood() {
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, ILikeWoodConfig.SERVER_SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ILikeWoodConfig.COMMON_SPEC);
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ILikeWoodConfig.CLIENT_SPEC);
 
@@ -165,6 +167,7 @@ public class ILikeWood {
                     CLIENT_CONFIG_LOADED = true;
                     break;
                 case SERVER:
+                    SERVER_CONFIG_LOADED = true;
                     break;
             }
         }

@@ -87,7 +87,7 @@ public class WoodenTieredItem extends Item implements IWooden {
     @Override
     public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlotType) {
         Multimap<String, AttributeModifier> attributeModifiers = HashMultimap.create();
-        if (ILikeWood.COMMON_CONFIG_LOADED && equipmentSlotType == EquipmentSlotType.MAINHAND) {
+        if (ILikeWood.SERVER_CONFIG_LOADED && equipmentSlotType == EquipmentSlotType.MAINHAND) {
             attributeModifiers.put(SharedMonsterAttributes.ATTACK_DAMAGE.getName(), new AttributeModifier(ATTACK_DAMAGE_MODIFIER, "Weapon modifier", this.getAttackDamage(), AttributeModifier.Operation.ADDITION));
             attributeModifiers.put(SharedMonsterAttributes.ATTACK_SPEED.getName(), new AttributeModifier(ATTACK_SPEED_MODIFIER, "Weapon modifier", this.getAttackSpeed(), AttributeModifier.Operation.ADDITION));
         }
