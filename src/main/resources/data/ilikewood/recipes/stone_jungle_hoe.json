@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    " I",
+    " I"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cobblestone"
+    },
+    "I": {
+      "item": "ilikewood:jungle_stick"
+    }
+  },
+  "result": {
+    "item": "ilikewood:stone_jungle_hoe"
+  }
+}

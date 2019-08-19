@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "I"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cobblestone"
+    },
+    "I": {
+      "item": "ilikewood:acacia_stick"
+    }
+  },
+  "result": {
+    "item": "ilikewood:stone_acacia_sword"
+  }
+}

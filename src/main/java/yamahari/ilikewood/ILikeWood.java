@@ -24,6 +24,11 @@ import yamahari.ilikewood.config.ILikeWoodConfig;
 import yamahari.ilikewood.container.WoodenLecternContainer;
 import yamahari.ilikewood.items.WoodenBlockItem;
 import yamahari.ilikewood.items.WoodenItem;
+import yamahari.ilikewood.items.tiered.WoodenHoeItem;
+import yamahari.ilikewood.items.tiered.WoodenSwordItem;
+import yamahari.ilikewood.items.tiered.tool.WoodenAxeItem;
+import yamahari.ilikewood.items.tiered.tool.WoodenPickaxeItem;
+import yamahari.ilikewood.items.tiered.tool.WoodenShovelItem;
 import yamahari.ilikewood.objectholders.WoodenTileEntityTypes;
 import yamahari.ilikewood.objectholders.barrel.WoodenBarrelBlocks;
 import yamahari.ilikewood.objectholders.bookshelf.WoodenBookshelfBlocks;
@@ -42,6 +47,7 @@ import yamahari.ilikewood.tilenentities.WoodenLecternTileEntity;
 import yamahari.ilikewood.tilenentities.renderer.WoodenChestItemStackTileEntityRenderer;
 import yamahari.ilikewood.util.Constants;
 import yamahari.ilikewood.util.WoodTypes;
+import yamahari.ilikewood.util.WoodenItemTiers;
 import yamahari.ilikewood.util.WoodenObjectType;
 
 import java.util.stream.Stream;
@@ -52,6 +58,9 @@ public class ILikeWood {
     public static final Logger logger = LogManager.getLogger(Constants.MOD_ID);
 
     private static final IProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+
+    public static Boolean COMMON_CONFIG_LOADED = false;
+    public static Boolean CLIENT_CONFIG_LOADED = false;
 
     public ILikeWood() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ILikeWoodConfig.COMMON_SPEC);
@@ -112,7 +121,12 @@ public class ILikeWood {
                     .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.WALL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
 
             Stream.of(WoodTypes.ACACIA, WoodTypes.BIRCH, WoodTypes.DARK_OAK, WoodTypes.JUNGLE, WoodTypes.OAK, WoodTypes.SPRUCE)
-                    .forEach(woodType -> itemRegistry.register(new WoodenItem(woodType, WoodenObjectType.STICK, (new Item.Properties()).group(ItemGroup.MATERIALS)).setRegistryName(woodType.getName() + "_" + WoodenObjectType.STICK.getName())));
+                    .forEach(woodType -> {
+                        itemRegistry.register(new WoodenItem(woodType, WoodenObjectType.STICK, (new Item.Properties()).group(ItemGroup.MATERIALS)).setRegistryName(woodType.getName() + "_" + WoodenObjectType.STICK.getName()));
+                        Stream.of(WoodenItemTiers.ACACIA, WoodenItemTiers.BIRCH, WoodenItemTiers.DARK_OAK, WoodenItemTiers.JUNGLE, WoodenItemTiers.OAK, WoodenItemTiers.SPRUCE, WoodenItemTiers.STONE, WoodenItemTiers.IRON, WoodenItemTiers.DIAMOND, WoodenItemTiers.GOLD)
+                                .filter(woodenItemTier -> !woodenItemTier.isWood() || woodType.getName().equals(woodenItemTier.getName()))
+                                .forEach(woodenItemTier -> itemRegistry.registerAll(new WoodenAxeItem(woodType, woodenItemTier), new WoodenHoeItem(woodType, woodenItemTier), new WoodenPickaxeItem(woodType, woodenItemTier), new WoodenShovelItem(woodType, woodenItemTier), new WoodenSwordItem(woodType, woodenItemTier)));
+                    });
         }
 
         @SuppressWarnings("ConstantConditions")
@@ -139,6 +153,20 @@ public class ILikeWood {
             event.getRegistry().registerAll(
                     new ContainerType<>((IContainerFactory<WoodenLecternContainer>) (windowId, inv, data) -> new WoodenLecternContainer(windowId)).setRegistryName("wooden_lectern")
             );
+        }
+
+        @SubscribeEvent
+        public static void onModConfigLoading(final ModConfig.Loading event) {
+            switch (event.getConfig().getType()) {
+                case COMMON:
+                    COMMON_CONFIG_LOADED = true;
+                    break;
+                case CLIENT:
+                    CLIENT_CONFIG_LOADED = true;
+                    break;
+                case SERVER:
+                    break;
+            }
         }
     }
 }

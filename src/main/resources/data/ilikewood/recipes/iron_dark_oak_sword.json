@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#",
+    "I"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "I": {
+      "item": "ilikewood:dark_oak_stick"
+    }
+  },
+  "result": {
+    "item": "ilikewood:iron_dark_oak_sword"
+  }
+}

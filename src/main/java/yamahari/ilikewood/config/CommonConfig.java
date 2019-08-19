@@ -231,13 +231,47 @@ public class CommonConfig {
     public final ForgeConfigSpec.IntValue OAK_STICK_BURN_TIME;
     public final ForgeConfigSpec.IntValue SPRUCE_STICK_BURN_TIME;
 
+    public final ForgeConfigSpec.IntValue ACACIA_AXE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_AXE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_AXE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_AXE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_AXE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_AXE_BURN_TIME;
+
+    public final ForgeConfigSpec.IntValue ACACIA_HOE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_HOE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_HOE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_HOE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_HOE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_HOE_BURN_TIME;
+
+    public final ForgeConfigSpec.IntValue ACACIA_PICKAXE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_PICKAXE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_PICKAXE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_PICKAXE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_PICKAXE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_PICKAXE_BURN_TIME;
+
+    public final ForgeConfigSpec.IntValue ACACIA_SHOVEL_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_SHOVEL_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_SHOVEL_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_SHOVEL_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_SHOVEL_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_SHOVEL_BURN_TIME;
+
+    public final ForgeConfigSpec.IntValue ACACIA_SWORD_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_SWORD_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_SWORD_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_SWORD_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_SWORD_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_SWORD_BURN_TIME;
+
     public final ForgeConfigSpec.DoubleValue ACACIA_ENCHANTING_POWER_BONUS;
     public final ForgeConfigSpec.DoubleValue BIRCH_ENCHANTING_POWER_BONUS;
     public final ForgeConfigSpec.DoubleValue DARK_OAK_ENCHANTING_POWER_BONUS;
     public final ForgeConfigSpec.DoubleValue JUNGLE_ENCHANTING_POWER_BONUS;
     public final ForgeConfigSpec.DoubleValue OAK_ENCHANTING_POWER_BONUS;
     public final ForgeConfigSpec.DoubleValue SPRUCE_ENCHANTING_POWER_BONUS;
-
 
     CommonConfig(ForgeConfigSpec.Builder builder) {
         builder.comment("Block Configuration").push("block");
@@ -463,6 +497,116 @@ public class CommonConfig {
                 .defineInRange("spruce", 100, -1, Integer.MAX_VALUE);
 
         builder.pop(); // stick
+
+        builder.comment("Axe").push("axe");
+
+        this.ACACIA_AXE_BURN_TIME = builder
+                .defineInRange("acacia", 200, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_AXE_BURN_TIME = builder
+                .defineInRange("birch", 200, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_AXE_BURN_TIME = builder
+                .defineInRange("dark_oak", 200, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_AXE_BURN_TIME = builder
+                .defineInRange("jungle", 200, -1, Integer.MAX_VALUE);
+
+        this.OAK_AXE_BURN_TIME = builder
+                .defineInRange("oak", 200, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_AXE_BURN_TIME = builder
+                .defineInRange("spruce", 200, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // axe
+
+        builder.comment("Hoe").push("hoe");
+
+        this.ACACIA_HOE_BURN_TIME = builder
+                .defineInRange("acacia", 200, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_HOE_BURN_TIME = builder
+                .defineInRange("birch", 200, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_HOE_BURN_TIME = builder
+                .defineInRange("dark_oak", 200, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_HOE_BURN_TIME = builder
+                .defineInRange("jungle", 200, -1, Integer.MAX_VALUE);
+
+        this.OAK_HOE_BURN_TIME = builder
+                .defineInRange("oak", 200, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_HOE_BURN_TIME = builder
+                .defineInRange("spruce", 200, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // hoe
+
+        builder.comment("Pickaxe").push("pickaxe");
+
+        this.ACACIA_PICKAXE_BURN_TIME = builder
+                .defineInRange("acacia", 200, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_PICKAXE_BURN_TIME = builder
+                .defineInRange("birch", 200, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_PICKAXE_BURN_TIME = builder
+                .defineInRange("dark_oak", 200, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_PICKAXE_BURN_TIME = builder
+                .defineInRange("jungle", 200, -1, Integer.MAX_VALUE);
+
+        this.OAK_PICKAXE_BURN_TIME = builder
+                .defineInRange("oak", 200, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_PICKAXE_BURN_TIME = builder
+                .defineInRange("spruce", 200, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // pickaxe
+
+        builder.comment("Shovel").push("shovel");
+
+        this.ACACIA_SHOVEL_BURN_TIME = builder
+                .defineInRange("acacia", 200, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_SHOVEL_BURN_TIME = builder
+                .defineInRange("birch", 200, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_SHOVEL_BURN_TIME = builder
+                .defineInRange("dark_oak", 200, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_SHOVEL_BURN_TIME = builder
+                .defineInRange("jungle", 200, -1, Integer.MAX_VALUE);
+
+        this.OAK_SHOVEL_BURN_TIME = builder
+                .defineInRange("oak", 200, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_SHOVEL_BURN_TIME = builder
+                .defineInRange("spruce", 200, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // shovel
+
+        builder.comment("Sword").push("sword");
+
+        this.ACACIA_SWORD_BURN_TIME = builder
+                .defineInRange("acacia", 200, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_SWORD_BURN_TIME = builder
+                .defineInRange("birch", 200, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_SWORD_BURN_TIME = builder
+                .defineInRange("dark_oak", 200, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_SWORD_BURN_TIME = builder
+                .defineInRange("jungle", 200, -1, Integer.MAX_VALUE);
+
+        this.OAK_SWORD_BURN_TIME = builder
+                .defineInRange("oak", 200, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_SWORD_BURN_TIME = builder
+                .defineInRange("spruce", 200, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // sword
         builder.pop(); // burn_time
         builder.pop(); // item
 

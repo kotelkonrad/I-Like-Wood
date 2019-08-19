@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    " I ",
+    " I "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "ilikewood:spruce_stick"
+    }
+  },
+  "result": {
+    "item": "ilikewood:golden_spruce_pickaxe"
+  }
+}
