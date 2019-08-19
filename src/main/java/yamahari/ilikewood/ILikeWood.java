@@ -6,6 +6,8 @@ import net.minecraft.block.material.Material;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.crafting.IRecipeSerializer;
+import net.minecraft.item.crafting.SpecialRecipeSerializer;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -41,6 +43,7 @@ import yamahari.ilikewood.objectholders.wall.WoodenWallBlocks;
 import yamahari.ilikewood.proxy.ClientProxy;
 import yamahari.ilikewood.proxy.CommonProxy;
 import yamahari.ilikewood.proxy.IProxy;
+import yamahari.ilikewood.recipe.WoodenRepairItemRecipe;
 import yamahari.ilikewood.tilenentities.WoodenBarrelTileEntity;
 import yamahari.ilikewood.tilenentities.WoodenChestTileEntity;
 import yamahari.ilikewood.tilenentities.WoodenLecternTileEntity;
@@ -154,6 +157,13 @@ public class ILikeWood {
         public static void onRegisterContainerType(final RegistryEvent.Register<ContainerType<?>> event) {
             event.getRegistry().registerAll(
                     new ContainerType<>((IContainerFactory<WoodenLecternContainer>) (windowId, inv, data) -> new WoodenLecternContainer(windowId)).setRegistryName("wooden_lectern")
+            );
+        }
+
+        @SubscribeEvent
+        public static void onRegisterRecipeSerializer(final RegistryEvent.Register<IRecipeSerializer<?>> event) {
+            event.getRegistry().register(
+                    new SpecialRecipeSerializer<>(WoodenRepairItemRecipe::new).setRegistryName("wooden_repair_item")
             );
         }
 
