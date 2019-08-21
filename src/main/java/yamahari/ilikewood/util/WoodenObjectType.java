@@ -10,8 +10,10 @@ public enum WoodenObjectType implements IStringSerializable {
     LADDER("ladder"),
     LECTERN("lectern"),
     PANELS("panels"),
+    POST("post"),
     SCAFFOLDING("scaffolding"),
     STICK("stick"),
+    STRIPPED_POST("stripped_%s_post"),
     WALL("wall");
 
     private final String name;

@@ -238,6 +238,20 @@ public class ServerConfig {
     public final ForgeConfigSpec.IntValue OAK_SCAFFOLDING_BURN_TIME;
     public final ForgeConfigSpec.IntValue SPRUCE_SCAFFOLDING_BURN_TIME;
 
+    public final ForgeConfigSpec.IntValue ACACIA_POST_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_POST_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_POST_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_POST_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_POST_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_POST_BURN_TIME;
+
+    public final ForgeConfigSpec.IntValue STRIPPED_ACACIA_POST_BURN_TIME;
+    public final ForgeConfigSpec.IntValue STRIPPED_BIRCH_POST_BURN_TIME;
+    public final ForgeConfigSpec.IntValue STRIPPED_DARK_OAK_POST_BURN_TIME;
+    public final ForgeConfigSpec.IntValue STRIPPED_JUNGLE_POST_BURN_TIME;
+    public final ForgeConfigSpec.IntValue STRIPPED_OAK_POST_BURN_TIME;
+    public final ForgeConfigSpec.IntValue STRIPPED_SPRUCE_POST_BURN_TIME;
+
     public final ForgeConfigSpec.IntValue ACACIA_AXE_BURN_TIME;
     public final ForgeConfigSpec.IntValue BIRCH_AXE_BURN_TIME;
     public final ForgeConfigSpec.IntValue DARK_OAK_AXE_BURN_TIME;
@@ -526,7 +540,51 @@ public class ServerConfig {
                 .defineInRange("spruce", 100, -1, Integer.MAX_VALUE);
 
         builder.pop(); // scaffolding
-        
+
+        builder.comment("Post").push("post");
+
+        this.ACACIA_POST_BURN_TIME = builder
+                .defineInRange("acacia", 300, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_POST_BURN_TIME = builder
+                .defineInRange("birch", 300, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_POST_BURN_TIME = builder
+                .defineInRange("dark_oak", 300, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_POST_BURN_TIME = builder
+                .defineInRange("jungle", 300, -1, Integer.MAX_VALUE);
+
+        this.OAK_POST_BURN_TIME = builder
+                .defineInRange("oak", 300, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_POST_BURN_TIME = builder
+                .defineInRange("spruce", 300, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // post
+
+        builder.comment("Stripped Post").push("stripped_post");
+
+        this.STRIPPED_ACACIA_POST_BURN_TIME = builder
+                .defineInRange("acacia", 300, -1, Integer.MAX_VALUE);
+
+        this.STRIPPED_BIRCH_POST_BURN_TIME = builder
+                .defineInRange("birch", 300, -1, Integer.MAX_VALUE);
+
+        this.STRIPPED_DARK_OAK_POST_BURN_TIME = builder
+                .defineInRange("dark_oak", 300, -1, Integer.MAX_VALUE);
+
+        this.STRIPPED_JUNGLE_POST_BURN_TIME = builder
+                .defineInRange("jungle", 300, -1, Integer.MAX_VALUE);
+
+        this.STRIPPED_OAK_POST_BURN_TIME = builder
+                .defineInRange("oak", 300, -1, Integer.MAX_VALUE);
+
+        this.STRIPPED_SPRUCE_POST_BURN_TIME = builder
+                .defineInRange("spruce", 300, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // stripped_post
+
         builder.comment("Axe").push("axe");
 
         this.ACACIA_AXE_BURN_TIME = builder

@@ -22,6 +22,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import yamahari.ilikewood.blocks.*;
+import yamahari.ilikewood.blocks.post.WoodenPostBlock;
+import yamahari.ilikewood.blocks.post.WoodenStrippedPostBlock;
 import yamahari.ilikewood.config.ILikeWoodConfig;
 import yamahari.ilikewood.container.WoodenLecternContainer;
 import yamahari.ilikewood.items.WoodenBlockItem;
@@ -40,6 +42,8 @@ import yamahari.ilikewood.objectholders.composter.WoodenComposterBlocks;
 import yamahari.ilikewood.objectholders.ladder.WoodenLadderBlocks;
 import yamahari.ilikewood.objectholders.lectern.WoodenLecternBlocks;
 import yamahari.ilikewood.objectholders.panels.WoodenPanelsBlocks;
+import yamahari.ilikewood.objectholders.post.WoodenPostBlocks;
+import yamahari.ilikewood.objectholders.post.stripped.WoodenStrippedPostBlocks;
 import yamahari.ilikewood.objectholders.scaffolding.WoodenScaffoldingBlocks;
 import yamahari.ilikewood.objectholders.wall.WoodenWallBlocks;
 import yamahari.ilikewood.proxy.ClientProxy;
@@ -83,8 +87,10 @@ public class ILikeWood {
     public static class ModEventHandler {
         @SubscribeEvent
         public static void onRegisterBlock(final RegistryEvent.Register<Block> event) {
+            final IForgeRegistry<Block> blockRegistry = event.getRegistry();
+
             Stream.of(WoodTypes.ACACIA, WoodTypes.BIRCH, WoodTypes.DARK_OAK, WoodTypes.JUNGLE, WoodTypes.OAK, WoodTypes.SPRUCE)
-                    .forEach(woodType -> event.getRegistry().registerAll(
+                    .forEach(woodType -> blockRegistry.registerAll(
                             new WoodenBarrelBlock(woodType, () -> WoodenTileEntityTypes.BARREL),
                             new WoodenChestBlock(woodType, () -> WoodenTileEntityTypes.CHEST),
                             new WoodenLecternBlock(woodType, () -> WoodenTileEntityTypes.LECTERN),
@@ -93,8 +99,18 @@ public class ILikeWood {
                             new WoodenComposterBlock(woodType),
                             new WoodenWallBlock(woodType),
                             new WoodenLadderBlock(woodType),
-                            new WoodenScaffoldingBlock(woodType)
+                            new WoodenScaffoldingBlock(woodType),
+                            new WoodenStrippedPostBlock(woodType).setRegistryName(String.format(WoodenObjectType.STRIPPED_POST.getName(), woodType.getName()))
                     ));
+
+            blockRegistry.registerAll(
+                    new WoodenPostBlock(WoodTypes.ACACIA, () -> WoodenStrippedPostBlocks.ACACIA),
+                    new WoodenPostBlock(WoodTypes.BIRCH, () -> WoodenStrippedPostBlocks.BIRCH),
+                    new WoodenPostBlock(WoodTypes.DARK_OAK, () -> WoodenStrippedPostBlocks.DARK_OAK),
+                    new WoodenPostBlock(WoodTypes.JUNGLE, () -> WoodenStrippedPostBlocks.JUNGLE),
+                    new WoodenPostBlock(WoodTypes.OAK, () -> WoodenStrippedPostBlocks.OAK),
+                    new WoodenPostBlock(WoodTypes.SPRUCE, () -> WoodenStrippedPostBlocks.SPRUCE)
+            );
         }
 
         @SuppressWarnings("ConstantConditions")
@@ -129,6 +145,12 @@ public class ILikeWood {
             Stream.of(WoodenScaffoldingBlocks.ACACIA, WoodenScaffoldingBlocks.BIRCH, WoodenScaffoldingBlocks.DARK_OAK, WoodenScaffoldingBlocks.JUNGLE, WoodenScaffoldingBlocks.OAK, WoodenScaffoldingBlocks.SPRUCE)
                     .forEach(block -> itemRegistry.register(new WoodenScaffoldingItem(block)));
 
+            Stream.of(WoodenPostBlocks.ACACIA, WoodenPostBlocks.BIRCH, WoodenPostBlocks.DARK_OAK, WoodenPostBlocks.JUNGLE, WoodenPostBlocks.OAK, WoodenPostBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.POST, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+
+            Stream.of(WoodenStrippedPostBlocks.ACACIA, WoodenStrippedPostBlocks.BIRCH, WoodenStrippedPostBlocks.DARK_OAK, WoodenStrippedPostBlocks.JUNGLE, WoodenStrippedPostBlocks.OAK, WoodenStrippedPostBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.STRIPPED_POST, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+            
             Stream.of(WoodTypes.ACACIA, WoodTypes.BIRCH, WoodTypes.DARK_OAK, WoodTypes.JUNGLE, WoodTypes.OAK, WoodTypes.SPRUCE)
                     .forEach(woodType -> {
                         itemRegistry.register(new WoodenItem(woodType, WoodenObjectType.STICK, (new Item.Properties()).group(ItemGroup.MATERIALS)).setRegistryName(woodType.getName() + "_" + WoodenObjectType.STICK.getName()));

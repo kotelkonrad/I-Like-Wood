@@ -18,6 +18,8 @@ public class WoodTypes {
                     .put(WoodenObjectType.LADDER, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_LADDER_BURN_TIME::get))
                     .put(WoodenObjectType.STICK, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_STICK_BURN_TIME::get))
                     .put(WoodenObjectType.SCAFFOLDING, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_SCAFFOLDING_BURN_TIME::get))
+                    .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_POST_BURN_TIME::get))
+                    .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_ACACIA_POST_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.ACACIA_ENCHANTING_POWER_BONUS::get
     );
@@ -36,6 +38,8 @@ public class WoodTypes {
                     .put(WoodenObjectType.LADDER, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_LADDER_BURN_TIME::get))
                     .put(WoodenObjectType.STICK, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_STICK_BURN_TIME::get))
                     .put(WoodenObjectType.SCAFFOLDING, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_SCAFFOLDING_BURN_TIME::get))
+                    .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_POST_BURN_TIME::get))
+                    .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_BIRCH_POST_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.BIRCH_ENCHANTING_POWER_BONUS::get
     );
@@ -54,6 +58,8 @@ public class WoodTypes {
                     .put(WoodenObjectType.LADDER, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_LADDER_BURN_TIME::get))
                     .put(WoodenObjectType.STICK, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_STICK_BURN_TIME::get))
                     .put(WoodenObjectType.SCAFFOLDING, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_SCAFFOLDING_BURN_TIME::get))
+                    .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_POST_BURN_TIME::get))
+                    .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_DARK_OAK_POST_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_ENCHANTING_POWER_BONUS::get
     );
@@ -72,6 +78,8 @@ public class WoodTypes {
                     .put(WoodenObjectType.LADDER, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_LADDER_BURN_TIME::get))
                     .put(WoodenObjectType.STICK, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_STICK_BURN_TIME::get))
                     .put(WoodenObjectType.SCAFFOLDING, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_SCAFFOLDING_BURN_TIME::get))
+                    .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_POST_BURN_TIME::get))
+                    .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_JUNGLE_POST_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.JUNGLE_ENCHANTING_POWER_BONUS::get
     );
@@ -90,6 +98,8 @@ public class WoodTypes {
                     .put(WoodenObjectType.LADDER, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_LADDER_BURN_TIME::get))
                     .put(WoodenObjectType.STICK, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_STICK_BURN_TIME::get))
                     .put(WoodenObjectType.SCAFFOLDING, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_SCAFFOLDING_BURN_TIME::get))
+                    .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_POST_BURN_TIME::get))
+                    .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_OAK_POST_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.OAK_ENCHANTING_POWER_BONUS::get
     );
@@ -108,6 +118,8 @@ public class WoodTypes {
                     .put(WoodenObjectType.LADDER, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_LADDER_BURN_TIME::get))
                     .put(WoodenObjectType.STICK, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_STICK_BURN_TIME::get))
                     .put(WoodenObjectType.SCAFFOLDING, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_SCAFFOLDING_BURN_TIME::get))
+                    .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_POST_BURN_TIME::get))
+                    .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_SPRUCE_POST_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.SPRUCE_ENCHANTING_POWER_BONUS::get
     );
