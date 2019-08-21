@@ -1,4 +1,10 @@
 {
+  "block.ilikewood.oak_scaffolding": "Dębowe rusztowanie",
+  "block.ilikewood.dark_oak_scaffolding": "Ciemnodębowe rusztowanie",
+  "block.ilikewood.spruce_scaffolding": "Świerkowe rusztowanie",
+  "block.ilikewood.birch_scaffolding": "Brzozowe rusztowanie",
+  "block.ilikewood.jungle_scaffolding": "Tropikalne rusztowanie",
+  "block.ilikewood.acacia_scaffolding": "Akacjowe rusztowanie",
   "block.ilikewood.oak_barrel": "Beczka dębowa",
   "block.ilikewood.dark_oak_barrel": "Beczka ciemnodębowa",
   "block.ilikewood.spruce_barrel": "Beczka świerkowa",
