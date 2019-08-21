@@ -5,6 +5,8 @@ import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -30,6 +32,11 @@ public class WoodenToolItem extends WoodenTieredItem {
         super(woodType, woodenItemTier, woodenTieredItemType, properties);
         this.effectiveBlocks = effectiveBlocks;
         this.toolTypes = ImmutableSet.of(toolType);
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return (enchantment.type != null && enchantment.type.equals(EnchantmentType.DIGGER)) || super.canApplyAtEnchantingTable(stack, enchantment);
     }
 
     @Override

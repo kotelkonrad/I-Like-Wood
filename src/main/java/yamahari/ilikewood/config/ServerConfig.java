@@ -231,6 +231,13 @@ public class ServerConfig {
     public final ForgeConfigSpec.IntValue OAK_STICK_BURN_TIME;
     public final ForgeConfigSpec.IntValue SPRUCE_STICK_BURN_TIME;
 
+    public final ForgeConfigSpec.IntValue ACACIA_SCAFFOLDING_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_SCAFFOLDING_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_SCAFFOLDING_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_SCAFFOLDING_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_SCAFFOLDING_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_SCAFFOLDING_BURN_TIME;
+
     public final ForgeConfigSpec.IntValue ACACIA_AXE_BURN_TIME;
     public final ForgeConfigSpec.IntValue BIRCH_AXE_BURN_TIME;
     public final ForgeConfigSpec.IntValue DARK_OAK_AXE_BURN_TIME;
@@ -498,6 +505,28 @@ public class ServerConfig {
 
         builder.pop(); // stick
 
+        builder.comment("Scaffolding").push("scaffolding");
+
+        this.ACACIA_SCAFFOLDING_BURN_TIME = builder
+                .defineInRange("acacia", 100, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_SCAFFOLDING_BURN_TIME = builder
+                .defineInRange("birch", 100, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_SCAFFOLDING_BURN_TIME = builder
+                .defineInRange("dark_oak", 100, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_SCAFFOLDING_BURN_TIME = builder
+                .defineInRange("jungle", 100, -1, Integer.MAX_VALUE);
+
+        this.OAK_SCAFFOLDING_BURN_TIME = builder
+                .defineInRange("oak", 100, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_SCAFFOLDING_BURN_TIME = builder
+                .defineInRange("spruce", 100, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // scaffolding
+        
         builder.comment("Axe").push("axe");
 
         this.ACACIA_AXE_BURN_TIME = builder

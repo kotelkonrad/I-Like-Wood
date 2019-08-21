@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "bottom=true": {
+      "model": "ilikewood:block/scaffolding/unstable/birch"
+    },
+    "bottom=false": {
+      "model": "ilikewood:block/scaffolding/stable/birch"
+    }
+  }
+}

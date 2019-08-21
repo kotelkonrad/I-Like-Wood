@@ -4,6 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -23,8 +25,19 @@ public class WoodenSwordItem extends WoodenTieredItem {
     }
 
     @Override
+    public boolean canHarvestBlock(ItemStack stack, BlockState state) {
+        Block block = state.getBlock();
+        return block == Blocks.BAMBOO || block == Blocks.BAMBOO_SAPLING;
+    }
+
+    @Override
     public boolean canPlayerBreakBlockWhileHolding(BlockState blockState, World world, BlockPos blockPos, PlayerEntity playerEntity) {
         return !playerEntity.isCreative();
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        return (enchantment.type != null && enchantment.type.equals(EnchantmentType.WEAPON)) || super.canApplyAtEnchantingTable(stack, enchantment);
     }
 
     @Override

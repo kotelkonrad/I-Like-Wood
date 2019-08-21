@@ -26,6 +26,7 @@ import yamahari.ilikewood.config.ILikeWoodConfig;
 import yamahari.ilikewood.container.WoodenLecternContainer;
 import yamahari.ilikewood.items.WoodenBlockItem;
 import yamahari.ilikewood.items.WoodenItem;
+import yamahari.ilikewood.items.WoodenScaffoldingItem;
 import yamahari.ilikewood.items.tiered.WoodenHoeItem;
 import yamahari.ilikewood.items.tiered.WoodenSwordItem;
 import yamahari.ilikewood.items.tiered.tool.WoodenAxeItem;
@@ -39,6 +40,7 @@ import yamahari.ilikewood.objectholders.composter.WoodenComposterBlocks;
 import yamahari.ilikewood.objectholders.ladder.WoodenLadderBlocks;
 import yamahari.ilikewood.objectholders.lectern.WoodenLecternBlocks;
 import yamahari.ilikewood.objectholders.panels.WoodenPanelsBlocks;
+import yamahari.ilikewood.objectholders.scaffolding.WoodenScaffoldingBlocks;
 import yamahari.ilikewood.objectholders.wall.WoodenWallBlocks;
 import yamahari.ilikewood.proxy.ClientProxy;
 import yamahari.ilikewood.proxy.CommonProxy;
@@ -82,18 +84,17 @@ public class ILikeWood {
         @SubscribeEvent
         public static void onRegisterBlock(final RegistryEvent.Register<Block> event) {
             Stream.of(WoodTypes.ACACIA, WoodTypes.BIRCH, WoodTypes.DARK_OAK, WoodTypes.JUNGLE, WoodTypes.OAK, WoodTypes.SPRUCE)
-                    .forEach(
-                            woodType -> event.getRegistry().registerAll(
-                                    new WoodenBarrelBlock(woodType, () -> WoodenTileEntityTypes.BARREL),
-                                    new WoodenChestBlock(woodType, () -> WoodenTileEntityTypes.CHEST),
-                                    new WoodenLecternBlock(woodType, () -> WoodenTileEntityTypes.LECTERN),
-                                    new WoodenBlock(woodType, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.f).sound(SoundType.WOOD)).setRegistryName(woodType.getName() + "_" + WoodenObjectType.PANELS.getName()),
-                                    new WoodenBookshelfBlock(woodType),
-                                    new WoodenComposterBlock(woodType),
-                                    new WoodenWallBlock(woodType),
-                                    new WoodenLadderBlock(woodType)
-                            )
-                    );
+                    .forEach(woodType -> event.getRegistry().registerAll(
+                            new WoodenBarrelBlock(woodType, () -> WoodenTileEntityTypes.BARREL),
+                            new WoodenChestBlock(woodType, () -> WoodenTileEntityTypes.CHEST),
+                            new WoodenLecternBlock(woodType, () -> WoodenTileEntityTypes.LECTERN),
+                            new WoodenBlock(woodType, Block.Properties.create(Material.WOOD).hardnessAndResistance(2.f).sound(SoundType.WOOD)).setRegistryName(woodType.getName() + "_" + WoodenObjectType.PANELS.getName()),
+                            new WoodenBookshelfBlock(woodType),
+                            new WoodenComposterBlock(woodType),
+                            new WoodenWallBlock(woodType),
+                            new WoodenLadderBlock(woodType),
+                            new WoodenScaffoldingBlock(woodType)
+                    ));
         }
 
         @SuppressWarnings("ConstantConditions")
@@ -124,6 +125,9 @@ public class ILikeWood {
 
             Stream.of(WoodenLadderBlocks.ACACIA, WoodenLadderBlocks.BIRCH, WoodenLadderBlocks.DARK_OAK, WoodenLadderBlocks.JUNGLE, WoodenLadderBlocks.OAK, WoodenLadderBlocks.SPRUCE)
                     .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.WALL, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+
+            Stream.of(WoodenScaffoldingBlocks.ACACIA, WoodenScaffoldingBlocks.BIRCH, WoodenScaffoldingBlocks.DARK_OAK, WoodenScaffoldingBlocks.JUNGLE, WoodenScaffoldingBlocks.OAK, WoodenScaffoldingBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenScaffoldingItem(block)));
 
             Stream.of(WoodTypes.ACACIA, WoodTypes.BIRCH, WoodTypes.DARK_OAK, WoodTypes.JUNGLE, WoodTypes.OAK, WoodTypes.SPRUCE)
                     .forEach(woodType -> {

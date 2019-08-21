@@ -10,6 +10,7 @@ public enum WoodenObjectType implements IStringSerializable {
     LADDER("ladder"),
     LECTERN("lectern"),
     PANELS("panels"),
+    SCAFFOLDING("scaffolding"),
     STICK("stick"),
     WALL("wall");
 
