@@ -1,4 +1,17 @@
 {
+  "block.ilikewood.oak_post": "Słupek dębowy",
+  "block.ilikewood.dark_oak_post": "Słupek ciemnodębowy",
+  "block.ilikewood.spruce_post": "Słupek świerkowy",
+  "block.ilikewood.birch_post": "Słupek brzozowy",
+  "block.ilikewood.jungle_post": "Słupek tropikalny",
+  "block.ilikewood.acacia_post": "Słupek akacjowy",
+	
+  "block.ilikewood.stripped_oak_post": "Okorowany słupek dębowy",
+  "block.ilikewood.stripped_dark_oak": "Okorowany słupek ciemnodębowy",
+  "block.ilikewood.stripped_spruce_post": "Okorowany słupek świerkowy",
+  "block.ilikewood.stripped_birch_post": "Okorowany słupek brzozowy",
+  "block.ilikewood.stripped_jungle_post": "Okorowany słupek tropikalny",
+  "block.ilikewood.stripped_acacia_post": "Okorowany słupek akacjowy",
   "block.ilikewood.oak_scaffolding": "Dębowe rusztowanie",
   "block.ilikewood.dark_oak_scaffolding": "Ciemnodębowe rusztowanie",
   "block.ilikewood.spruce_scaffolding": "Świerkowe rusztowanie",
