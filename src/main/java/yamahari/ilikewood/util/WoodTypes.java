@@ -21,6 +21,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_POST_BURN_TIME::get))
                     .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_ACACIA_POST_BURN_TIME::get))
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_CRAFTING_TABLE_BURN_TIME::get))
+                    .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_TORCH_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.ACACIA_ENCHANTING_POWER_BONUS::get
     );
@@ -42,6 +43,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_POST_BURN_TIME::get))
                     .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_BIRCH_POST_BURN_TIME::get))
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_CRAFTING_TABLE_BURN_TIME::get))
+                    .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_TORCH_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.BIRCH_ENCHANTING_POWER_BONUS::get
     );
@@ -63,6 +65,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_POST_BURN_TIME::get))
                     .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_DARK_OAK_POST_BURN_TIME::get))
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_CRAFTING_TABLE_BURN_TIME::get))
+                    .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_TORCH_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_ENCHANTING_POWER_BONUS::get
     );
@@ -84,6 +87,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_POST_BURN_TIME::get))
                     .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_JUNGLE_POST_BURN_TIME::get))
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_CRAFTING_TABLE_BURN_TIME::get))
+                    .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_TORCH_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.JUNGLE_ENCHANTING_POWER_BONUS::get
     );
@@ -105,6 +109,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_POST_BURN_TIME::get))
                     .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_OAK_POST_BURN_TIME::get))
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_CRAFTING_TABLE_BURN_TIME::get))
+                    .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_TORCH_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.OAK_ENCHANTING_POWER_BONUS::get
     );
@@ -126,6 +131,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_POST_BURN_TIME::get))
                     .put(WoodenObjectType.STRIPPED_POST, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.STRIPPED_SPRUCE_POST_BURN_TIME::get))
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_CRAFTING_TABLE_BURN_TIME::get))
+                    .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_TORCH_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.SPRUCE_ENCHANTING_POWER_BONUS::get
     );

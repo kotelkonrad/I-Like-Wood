@@ -15,6 +15,7 @@ public enum WoodenObjectType implements IStringSerializable {
     SCAFFOLDING("scaffolding"),
     STICK("stick"),
     STRIPPED_POST("stripped_%s_post"),
+    TORCH("torch"),
     WALL("wall");
 
     private final String name;

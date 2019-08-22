@@ -24,12 +24,15 @@ import org.apache.logging.log4j.Logger;
 import yamahari.ilikewood.blocks.*;
 import yamahari.ilikewood.blocks.post.WoodenPostBlock;
 import yamahari.ilikewood.blocks.post.WoodenStrippedPostBlock;
+import yamahari.ilikewood.blocks.torch.WoodenTorchBlock;
+import yamahari.ilikewood.blocks.torch.WoodenWallTorchBlock;
 import yamahari.ilikewood.config.ILikeWoodConfig;
 import yamahari.ilikewood.container.WoodenLecternContainer;
 import yamahari.ilikewood.container.WoodenWorkbenchContainer;
 import yamahari.ilikewood.items.WoodenBlockItem;
 import yamahari.ilikewood.items.WoodenItem;
 import yamahari.ilikewood.items.WoodenScaffoldingItem;
+import yamahari.ilikewood.items.WoodenWallOrFloorItem;
 import yamahari.ilikewood.items.tiered.WoodenHoeItem;
 import yamahari.ilikewood.items.tiered.WoodenSwordItem;
 import yamahari.ilikewood.items.tiered.tool.WoodenAxeItem;
@@ -47,6 +50,8 @@ import yamahari.ilikewood.objectholders.panels.WoodenPanelsBlocks;
 import yamahari.ilikewood.objectholders.post.WoodenPostBlocks;
 import yamahari.ilikewood.objectholders.post.stripped.WoodenStrippedPostBlocks;
 import yamahari.ilikewood.objectholders.scaffolding.WoodenScaffoldingBlocks;
+import yamahari.ilikewood.objectholders.torch.WoodenTorchBlocks;
+import yamahari.ilikewood.objectholders.torch.wall.WoodenWallTorchBlocks;
 import yamahari.ilikewood.objectholders.wall.WoodenWallBlocks;
 import yamahari.ilikewood.proxy.ClientProxy;
 import yamahari.ilikewood.proxy.CommonProxy;
@@ -103,7 +108,9 @@ public class ILikeWood {
                             new WoodenLadderBlock(woodType),
                             new WoodenScaffoldingBlock(woodType),
                             new WoodenStrippedPostBlock(woodType).setRegistryName(String.format(WoodenObjectType.STRIPPED_POST.getName(), woodType.getName())),
-                            new WoodenCraftingTableBlock(woodType)
+                            new WoodenCraftingTableBlock(woodType),
+                            new WoodenTorchBlock(woodType),
+                            new WoodenWallTorchBlock(woodType)
                     ));
 
             blockRegistry.registerAll(
@@ -164,6 +171,15 @@ public class ILikeWood {
                                 .filter(woodenItemTier -> !woodenItemTier.isWood() || woodType.getName().equals(woodenItemTier.getName()))
                                 .forEach(woodenItemTier -> itemRegistry.registerAll(new WoodenAxeItem(woodType, woodenItemTier), new WoodenHoeItem(woodType, woodenItemTier), new WoodenPickaxeItem(woodType, woodenItemTier), new WoodenShovelItem(woodType, woodenItemTier), new WoodenSwordItem(woodType, woodenItemTier)));
                     });
+
+            itemRegistry.registerAll(
+                    new WoodenWallOrFloorItem(WoodenTorchBlocks.ACACIA, WoodenWallTorchBlocks.ACACIA, WoodenObjectType.TORCH, (new Item.Properties()).group(ItemGroup.DECORATIONS)),
+                    new WoodenWallOrFloorItem(WoodenTorchBlocks.BIRCH, WoodenWallTorchBlocks.BIRCH, WoodenObjectType.TORCH, (new Item.Properties()).group(ItemGroup.DECORATIONS)),
+                    new WoodenWallOrFloorItem(WoodenTorchBlocks.DARK_OAK, WoodenWallTorchBlocks.DARK_OAK, WoodenObjectType.TORCH, (new Item.Properties()).group(ItemGroup.DECORATIONS)),
+                    new WoodenWallOrFloorItem(WoodenTorchBlocks.JUNGLE, WoodenWallTorchBlocks.JUNGLE, WoodenObjectType.TORCH, (new Item.Properties()).group(ItemGroup.DECORATIONS)),
+                    new WoodenWallOrFloorItem(WoodenTorchBlocks.OAK, WoodenWallTorchBlocks.OAK, WoodenObjectType.TORCH, (new Item.Properties()).group(ItemGroup.DECORATIONS)),
+                    new WoodenWallOrFloorItem(WoodenTorchBlocks.SPRUCE, WoodenWallTorchBlocks.SPRUCE, WoodenObjectType.TORCH, (new Item.Properties()).group(ItemGroup.DECORATIONS))
+            );
         }
 
         @SuppressWarnings("ConstantConditions")
