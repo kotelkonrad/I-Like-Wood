@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:green_wool"
+    },
+    "X": {
+      "item": "ilikewood:dark_oak_panels"
+    }
+  },
+  "result": {
+    "item": "ilikewood:green_dark_oak_bed"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:purple_wool"
+    },
+    "X": {
+      "item": "ilikewood:spruce_panels"
+    }
+  },
+  "result": {
+    "item": "ilikewood:purple_spruce_bed"
+  }
+}

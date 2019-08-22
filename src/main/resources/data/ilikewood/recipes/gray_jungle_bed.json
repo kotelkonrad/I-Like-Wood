@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:gray_wool"
+    },
+    "X": {
+      "item": "ilikewood:jungle_panels"
+    }
+  },
+  "result": {
+    "item": "ilikewood:gray_jungle_bed"
+  }
+}

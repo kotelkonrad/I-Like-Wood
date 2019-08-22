@@ -4,6 +4,7 @@ import net.minecraft.util.IStringSerializable;
 
 public enum WoodenObjectType implements IStringSerializable {
     BARREL("barrel"),
+    BED("bed"),
     BOOKSHELF("bookshelf"),
     CHEST("chest"),
     COMPOSTER("composter"),

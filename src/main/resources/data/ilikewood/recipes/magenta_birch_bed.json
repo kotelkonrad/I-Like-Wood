@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:magenta_wool"
+    },
+    "X": {
+      "item": "ilikewood:birch_panels"
+    }
+  },
+  "result": {
+    "item": "ilikewood:magenta_birch_bed"
+  }
+}

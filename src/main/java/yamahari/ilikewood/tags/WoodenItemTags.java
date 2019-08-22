@@ -9,6 +9,7 @@ import yamahari.ilikewood.util.Constants;
 @SuppressWarnings("unused")
 public class WoodenItemTags {
     public static final Tag<Item> BARRELS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "barrels"));
+    public static final Tag<Item> BEDS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "beds"));
     public static final Tag<Item> BOOKSHELFS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "bookshelfs"));
     public static final Tag<Item> CHESTS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "chests"));
     public static final Tag<Item> COMPOSTERS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "composters"));

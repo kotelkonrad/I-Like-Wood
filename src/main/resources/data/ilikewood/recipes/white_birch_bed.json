@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:white_wool"
+    },
+    "X": {
+      "item": "ilikewood:birch_panels"
+    }
+  },
+  "result": {
+    "item": "ilikewood:white_birch_bed"
+  }
+}
