@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "ilikewood:oak_log_pile",
+    "ilikewood:dark_oak_log_pile",
+    "ilikewood:spruce_log_pile",
+    "ilikewood:birch_log_pile",
+    "ilikewood:acacia_log_pile",
+    "ilikewood:jungle_log_pile"
+  ]
+}
