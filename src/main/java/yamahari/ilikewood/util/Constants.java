@@ -9,6 +9,8 @@ public class Constants {
     public static final ResourceLocation TEXTURE_CHEST_DEFAULT = new ResourceLocation("minecraft", "textures/entity/chest/normal.png");
     public static final ResourceLocation TEXTURE_CHEST_DOUBLE_DEFAULT = new ResourceLocation("minecraft", "textures/entity/chest/normal_double.png");
 
+    public static final ResourceLocation TEXTURE_CRAFTING_TABLE_GUI = new ResourceLocation("minecraft", "textures/gui/container/crafting_table.png");
+
     public static final ImmutableMap<WoodType, ResourceLocation> TEXTURES_CHEST =
             (new ImmutableMap.Builder<WoodType, ResourceLocation>())
                     .put(WoodTypes.ACACIA, new ResourceLocation(MOD_ID, "textures/entity/chest/acacia.png"))

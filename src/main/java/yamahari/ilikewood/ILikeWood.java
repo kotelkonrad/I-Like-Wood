@@ -26,6 +26,7 @@ import yamahari.ilikewood.blocks.post.WoodenPostBlock;
 import yamahari.ilikewood.blocks.post.WoodenStrippedPostBlock;
 import yamahari.ilikewood.config.ILikeWoodConfig;
 import yamahari.ilikewood.container.WoodenLecternContainer;
+import yamahari.ilikewood.container.WoodenWorkbenchContainer;
 import yamahari.ilikewood.items.WoodenBlockItem;
 import yamahari.ilikewood.items.WoodenItem;
 import yamahari.ilikewood.items.WoodenScaffoldingItem;
@@ -39,6 +40,7 @@ import yamahari.ilikewood.objectholders.barrel.WoodenBarrelBlocks;
 import yamahari.ilikewood.objectholders.bookshelf.WoodenBookshelfBlocks;
 import yamahari.ilikewood.objectholders.chest.WoodenChestBlocks;
 import yamahari.ilikewood.objectholders.composter.WoodenComposterBlocks;
+import yamahari.ilikewood.objectholders.crafting_table.WoodenCraftingTableBlocks;
 import yamahari.ilikewood.objectholders.ladder.WoodenLadderBlocks;
 import yamahari.ilikewood.objectholders.lectern.WoodenLecternBlocks;
 import yamahari.ilikewood.objectholders.panels.WoodenPanelsBlocks;
@@ -100,7 +102,8 @@ public class ILikeWood {
                             new WoodenWallBlock(woodType),
                             new WoodenLadderBlock(woodType),
                             new WoodenScaffoldingBlock(woodType),
-                            new WoodenStrippedPostBlock(woodType).setRegistryName(String.format(WoodenObjectType.STRIPPED_POST.getName(), woodType.getName()))
+                            new WoodenStrippedPostBlock(woodType).setRegistryName(String.format(WoodenObjectType.STRIPPED_POST.getName(), woodType.getName())),
+                            new WoodenCraftingTableBlock(woodType)
                     ));
 
             blockRegistry.registerAll(
@@ -150,6 +153,9 @@ public class ILikeWood {
 
             Stream.of(WoodenStrippedPostBlocks.ACACIA, WoodenStrippedPostBlocks.BIRCH, WoodenStrippedPostBlocks.DARK_OAK, WoodenStrippedPostBlocks.JUNGLE, WoodenStrippedPostBlocks.OAK, WoodenStrippedPostBlocks.SPRUCE)
                     .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.STRIPPED_POST, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
+
+            Stream.of(WoodenCraftingTableBlocks.ACACIA, WoodenCraftingTableBlocks.BIRCH, WoodenCraftingTableBlocks.DARK_OAK, WoodenCraftingTableBlocks.JUNGLE, WoodenCraftingTableBlocks.OAK, WoodenCraftingTableBlocks.SPRUCE)
+                    .forEach(block -> itemRegistry.register(new WoodenBlockItem(block, WoodenObjectType.CRAFTING_TABLE, (new Item.Properties()).group(ItemGroup.DECORATIONS))));
             
             Stream.of(WoodTypes.ACACIA, WoodTypes.BIRCH, WoodTypes.DARK_OAK, WoodTypes.JUNGLE, WoodTypes.OAK, WoodTypes.SPRUCE)
                     .forEach(woodType -> {
@@ -182,7 +188,8 @@ public class ILikeWood {
         @SubscribeEvent
         public static void onRegisterContainerType(final RegistryEvent.Register<ContainerType<?>> event) {
             event.getRegistry().registerAll(
-                    new ContainerType<>((IContainerFactory<WoodenLecternContainer>) (windowId, inv, data) -> new WoodenLecternContainer(windowId)).setRegistryName("wooden_lectern")
+                    new ContainerType<>((IContainerFactory<WoodenLecternContainer>) (windowId, inv, data) -> new WoodenLecternContainer(windowId)).setRegistryName("wooden_lectern"),
+                    new ContainerType<>(WoodenWorkbenchContainer::new).setRegistryName("wooden_workbench")
             );
         }
 

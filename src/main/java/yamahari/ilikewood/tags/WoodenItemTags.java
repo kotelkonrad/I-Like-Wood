@@ -12,6 +12,7 @@ public class WoodenItemTags {
     public static final Tag<Item> BOOKSHELFS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "bookshelfs"));
     public static final Tag<Item> CHESTS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "chests"));
     public static final Tag<Item> COMPOSTERS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "composters"));
+    public static final Tag<Item> CRAFTING_TABLES = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "crafting_tables"));
     public static final Tag<Item> LADDERS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "ladders"));
     public static final Tag<Item> PANELS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "panels"));
     public static final Tag<Item> POSTS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "posts"));

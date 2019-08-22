@@ -252,6 +252,13 @@ public class ServerConfig {
     public final ForgeConfigSpec.IntValue STRIPPED_OAK_POST_BURN_TIME;
     public final ForgeConfigSpec.IntValue STRIPPED_SPRUCE_POST_BURN_TIME;
 
+    public final ForgeConfigSpec.IntValue ACACIA_CRAFTING_TABLE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_CRAFTING_TABLE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_CRAFTING_TABLE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_CRAFTING_TABLE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_CRAFTING_TABLE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_CRAFTING_TABLE_BURN_TIME;
+
     public final ForgeConfigSpec.IntValue ACACIA_AXE_BURN_TIME;
     public final ForgeConfigSpec.IntValue BIRCH_AXE_BURN_TIME;
     public final ForgeConfigSpec.IntValue DARK_OAK_AXE_BURN_TIME;
@@ -585,6 +592,28 @@ public class ServerConfig {
 
         builder.pop(); // stripped_post
 
+        builder.comment("Crafting Table").push("crafting_table");
+
+        this.ACACIA_CRAFTING_TABLE_BURN_TIME = builder
+                .defineInRange("acacia", 300, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_CRAFTING_TABLE_BURN_TIME = builder
+                .defineInRange("birch", 300, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_CRAFTING_TABLE_BURN_TIME = builder
+                .defineInRange("dark_oak", 300, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_CRAFTING_TABLE_BURN_TIME = builder
+                .defineInRange("jungle", 300, -1, Integer.MAX_VALUE);
+
+        this.OAK_CRAFTING_TABLE_BURN_TIME = builder
+                .defineInRange("oak", 300, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_CRAFTING_TABLE_BURN_TIME = builder
+                .defineInRange("spruce", 300, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // crafting_table
+        
         builder.comment("Axe").push("axe");
 
         this.ACACIA_AXE_BURN_TIME = builder
