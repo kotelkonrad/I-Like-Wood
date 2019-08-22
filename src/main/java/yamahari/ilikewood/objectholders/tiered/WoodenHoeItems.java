@@ -1,7 +1,7 @@
 package yamahari.ilikewood.objectholders.tiered;
 
 import net.minecraftforge.registries.ObjectHolder;
-import yamahari.ilikewood.items.tiered.WoodenHoeItem;
+import yamahari.ilikewood.items.tier.WoodenHoeItem;
 import yamahari.ilikewood.util.Constants;
 
 @SuppressWarnings("unused")

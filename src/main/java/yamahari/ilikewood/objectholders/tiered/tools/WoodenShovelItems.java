@@ -1,7 +1,7 @@
 package yamahari.ilikewood.objectholders.tiered.tools;
 
 import net.minecraftforge.registries.ObjectHolder;
-import yamahari.ilikewood.items.tiered.tool.WoodenShovelItem;
+import yamahari.ilikewood.items.tier.tool.WoodenShovelItem;
 import yamahari.ilikewood.util.Constants;
 
 @SuppressWarnings("unused")

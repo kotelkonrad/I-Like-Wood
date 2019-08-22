@@ -1,15 +1,11 @@
-package yamahari.ilikewood.items.tiered;
+package yamahari.ilikewood.items.tier;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.ToolType;
+import net.minecraft.item.*;
 import yamahari.ilikewood.ILikeWood;
 import yamahari.ilikewood.tier.WoodenItemTier;
 import yamahari.ilikewood.tier.WoodenTieredItemType;
@@ -18,27 +14,46 @@ import yamahari.ilikewood.util.WoodType;
 
 import javax.annotation.Nullable;
 
-public class WoodenTieredItem extends Item implements IWooden {
+public class WoodenHoeItem extends HoeItem implements IWooden, IWoodenTieredItem {
     private final WoodType woodType;
-    private final WoodenTieredItemType woodenTieredItemType;
     private final WoodenItemTier woodenItemTier;
 
-    public WoodenTieredItem(WoodType woodType, WoodenItemTier woodenItemTier, WoodenTieredItemType woodenTieredItemType, Item.Properties properties) {
-        super(properties);
-        this.woodenItemTier = woodenItemTier;
-        this.woodenTieredItemType = woodenTieredItemType;
+    public WoodenHoeItem(WoodType woodType, WoodenItemTier woodenItemTier) {
+        super(ItemTier.WOOD, 0.f, (new Item.Properties()).group(ItemGroup.TOOLS));
         this.woodType = woodType;
+        this.woodenItemTier = woodenItemTier;
         this.setRegistryName(this.getWoodType().getModId(), (this.getWoodenItemTier().isWood() ? "" : (this.getWoodenItemTier().getName() + "_")) + this.getWoodType().getName() + "_" + this.getWoodenTieredItemType().getName());
     }
 
     @Override
-    public boolean isDamageable() {
-        return this.getMaxDamage(null) > 0;
+    public WoodenItemTier getWoodenItemTier() {
+        return this.woodenItemTier;
+    }
+
+    @Override
+    public WoodenTieredItemType getWoodenTieredItemType() {
+        return WoodenTieredItemType.HOE;
+    }
+
+    @Override
+    public WoodType getWoodType() {
+        return this.woodType;
+    }
+
+    @SuppressWarnings("NullableProblems")
+    @Override
+    public IItemTier getTier() {
+        return this.getWoodenItemTier();
     }
 
     @Override
     public int getItemEnchantability() {
         return this.getWoodenItemTier().getEnchantability();
+    }
+
+    @Override
+    public boolean isDamageable() {
+        return this.getMaxDamage(null) > 0;
     }
 
     @Override
@@ -48,13 +63,8 @@ public class WoodenTieredItem extends Item implements IWooden {
 
     @SuppressWarnings("NullableProblems")
     @Override
-    public int getHarvestLevel(ItemStack itemStack, ToolType toolType, @Nullable PlayerEntity playerEntity, @Nullable BlockState blockState) {
-        return this.getWoodenItemTier().getHarvestLevel();
-    }
-
-    @Override
     public boolean getIsRepairable(ItemStack itemStack0, ItemStack itemStack1) {
-        return this.getWoodenItemTier().getRepairMaterial().test(itemStack1) || super.getIsRepairable(itemStack0, itemStack1);
+        return this.getWoodenItemTier().getRepairMaterial().test(itemStack1);
     }
 
     @Override
@@ -70,20 +80,7 @@ public class WoodenTieredItem extends Item implements IWooden {
         return this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getAttackSpeed();
     }
 
-    public WoodenTieredItemType getWoodenTieredItemType() {
-        return woodenTieredItemType;
-    }
-
-    public WoodenItemTier getWoodenItemTier() {
-        return this.woodenItemTier;
-    }
-
-    @Override
-    public WoodType getWoodType() {
-        return this.woodType;
-    }
-
-    @SuppressWarnings({"NullableProblems", "deprecation"})
+    @SuppressWarnings({"NullableProblems"})
     @Override
     public Multimap<String, AttributeModifier> getAttributeModifiers(EquipmentSlotType equipmentSlotType) {
         Multimap<String, AttributeModifier> attributeModifiers = HashMultimap.create();

@@ -8,7 +8,7 @@ import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.SpecialRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import yamahari.ilikewood.items.tiered.WoodenTieredItem;
+import yamahari.ilikewood.items.tier.IWoodenTieredItem;
 import yamahari.ilikewood.objectholders.WoodenRecipeSerializers;
 
 import java.util.List;
@@ -26,12 +26,12 @@ public class WoodenRepairItemRecipe extends SpecialRecipe {
             ItemStack itemStack = craftingInventory.getStackInSlot(i);
             if (!itemStack.isEmpty()) {
                 Item item = itemStack.getItem();
-                if (item instanceof WoodenTieredItem) {
+                if (item instanceof IWoodenTieredItem) {
                     list.add(itemStack);
                     if (list.size() > 1) {
                         ItemStack itemStack1 = list.get(0);
-                        WoodenTieredItem tieredItem = (WoodenTieredItem) item;
-                        WoodenTieredItem tieredItem1 = (WoodenTieredItem) itemStack1.getItem();
+                        IWoodenTieredItem tieredItem = (IWoodenTieredItem) item;
+                        IWoodenTieredItem tieredItem1 = (IWoodenTieredItem) itemStack1.getItem();
                         if (tieredItem.getWoodenTieredItemType() != tieredItem1.getWoodenTieredItemType() || tieredItem.getWoodenItemTier() != tieredItem1.getWoodenItemTier()
                                 || itemStack1.getCount() != 1 || itemStack.getCount() != 1 || !itemStack1.isRepairable()) {
                             return false;
@@ -53,12 +53,12 @@ public class WoodenRepairItemRecipe extends SpecialRecipe {
             ItemStack itemStack = craftingInventory.getStackInSlot(i);
             if (!itemStack.isEmpty()) {
                 Item item = itemStack.getItem();
-                if (item instanceof WoodenTieredItem) {
+                if (item instanceof IWoodenTieredItem) {
                     list.add(itemStack);
                     if (list.size() > 1) {
                         ItemStack itemStack1 = list.get(0);
-                        WoodenTieredItem tieredItem = (WoodenTieredItem) item;
-                        WoodenTieredItem tieredItem1 = (WoodenTieredItem) itemStack1.getItem();
+                        IWoodenTieredItem tieredItem = (IWoodenTieredItem) item;
+                        IWoodenTieredItem tieredItem1 = (IWoodenTieredItem) itemStack1.getItem();
                         if (tieredItem.getWoodenTieredItemType() != tieredItem1.getWoodenTieredItemType() || tieredItem.getWoodenItemTier() != tieredItem1.getWoodenItemTier()
                                 || itemStack1.getCount() != 1 || itemStack.getCount() != 1 || !itemStack1.isRepairable()) {
                             return ItemStack.EMPTY;
@@ -71,8 +71,8 @@ public class WoodenRepairItemRecipe extends SpecialRecipe {
         if (list.size() == 2) {
             ItemStack itemStack = list.get(0);
             ItemStack itemStack1 = list.get(1);
-            WoodenTieredItem tieredItem = (WoodenTieredItem) itemStack.getItem();
-            WoodenTieredItem tieredItem1 = (WoodenTieredItem) itemStack1.getItem();
+            IWoodenTieredItem tieredItem = (IWoodenTieredItem) itemStack.getItem();
+            IWoodenTieredItem tieredItem1 = (IWoodenTieredItem) itemStack1.getItem();
             if (tieredItem.getWoodenTieredItemType() == tieredItem1.getWoodenTieredItemType() && tieredItem.getWoodenItemTier() == tieredItem1.getWoodenItemTier()
                     && itemStack1.getCount() == 1 && itemStack.getCount() == 1 && itemStack1.isRepairable()) {
                 int j = itemStack.getMaxDamage() - itemStack.getDamage();

@@ -1,7 +1,7 @@
 package yamahari.ilikewood.objectholders.tiered.tools;
 
 import net.minecraftforge.registries.ObjectHolder;
-import yamahari.ilikewood.items.tiered.tool.WoodenPickaxeItem;
+import yamahari.ilikewood.items.tier.tool.WoodenPickaxeItem;
 import yamahari.ilikewood.util.Constants;
 
 @SuppressWarnings("unused")
