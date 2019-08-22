@@ -11,6 +11,7 @@ public enum WoodenObjectType implements IStringSerializable {
     CRAFTING_TABLE("crafting_table"),
     LADDER("ladder"),
     LECTERN("lectern"),
+    LOG_PILE("log_pile"),
     PANELS("panels"),
     POST("post"),
     SCAFFOLDING("scaffolding"),

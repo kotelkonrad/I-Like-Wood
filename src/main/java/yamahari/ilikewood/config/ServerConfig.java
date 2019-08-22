@@ -273,6 +273,13 @@ public class ServerConfig {
     public final ForgeConfigSpec.IntValue OAK_BED_BURN_TIME;
     public final ForgeConfigSpec.IntValue SPRUCE_BED_BURN_TIME;
 
+    public final ForgeConfigSpec.IntValue ACACIA_LOG_PILE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_LOG_PILE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_LOG_PILE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_LOG_PILE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_LOG_PILE_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_LOG_PILE_BURN_TIME;
+
     public final ForgeConfigSpec.IntValue ACACIA_AXE_BURN_TIME;
     public final ForgeConfigSpec.IntValue BIRCH_AXE_BURN_TIME;
     public final ForgeConfigSpec.IntValue DARK_OAK_AXE_BURN_TIME;
@@ -671,6 +678,28 @@ public class ServerConfig {
                 .defineInRange("spruce", 400, -1, Integer.MAX_VALUE);
 
         builder.pop(); // bed
+
+        builder.comment("Log Pile").push("log_pile");
+
+        this.ACACIA_LOG_PILE_BURN_TIME = builder
+                .defineInRange("acacia", 400, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_LOG_PILE_BURN_TIME = builder
+                .defineInRange("birch", 400, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_LOG_PILE_BURN_TIME = builder
+                .defineInRange("dark_oak", 400, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_LOG_PILE_BURN_TIME = builder
+                .defineInRange("jungle", 400, -1, Integer.MAX_VALUE);
+
+        this.OAK_LOG_PILE_BURN_TIME = builder
+                .defineInRange("oak", 400, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_LOG_PILE_BURN_TIME = builder
+                .defineInRange("spruce", 400, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // log_pile
         
         builder.comment("Axe").push("axe");
 

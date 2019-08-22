@@ -23,6 +23,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_CRAFTING_TABLE_BURN_TIME::get))
                     .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_TORCH_BURN_TIME::get))
                     .put(WoodenObjectType.BED, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_BED_BURN_TIME::get))
+                    .put(WoodenObjectType.LOG_PILE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.ACACIA_LOG_PILE_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.ACACIA_ENCHANTING_POWER_BONUS::get
     );
@@ -46,6 +47,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_CRAFTING_TABLE_BURN_TIME::get))
                     .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_TORCH_BURN_TIME::get))
                     .put(WoodenObjectType.BED, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_BED_BURN_TIME::get))
+                    .put(WoodenObjectType.LOG_PILE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.BIRCH_LOG_PILE_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.BIRCH_ENCHANTING_POWER_BONUS::get
     );
@@ -69,6 +71,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_CRAFTING_TABLE_BURN_TIME::get))
                     .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_TORCH_BURN_TIME::get))
                     .put(WoodenObjectType.BED, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_BED_BURN_TIME::get))
+                    .put(WoodenObjectType.LOG_PILE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_LOG_PILE_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_ENCHANTING_POWER_BONUS::get
     );
@@ -92,6 +95,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_CRAFTING_TABLE_BURN_TIME::get))
                     .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_TORCH_BURN_TIME::get))
                     .put(WoodenObjectType.BED, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_BED_BURN_TIME::get))
+                    .put(WoodenObjectType.LOG_PILE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.JUNGLE_LOG_PILE_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.JUNGLE_ENCHANTING_POWER_BONUS::get
     );
@@ -115,6 +119,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_CRAFTING_TABLE_BURN_TIME::get))
                     .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_TORCH_BURN_TIME::get))
                     .put(WoodenObjectType.BED, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_BED_BURN_TIME::get))
+                    .put(WoodenObjectType.LOG_PILE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.OAK_LOG_PILE_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.OAK_ENCHANTING_POWER_BONUS::get
     );
@@ -138,6 +143,7 @@ public class WoodTypes {
                     .put(WoodenObjectType.CRAFTING_TABLE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_CRAFTING_TABLE_BURN_TIME::get))
                     .put(WoodenObjectType.TORCH, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_TORCH_BURN_TIME::get))
                     .put(WoodenObjectType.BED, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_BED_BURN_TIME::get))
+                    .put(WoodenObjectType.LOG_PILE, new WoodType.WoodTypeProperties(ILikeWoodConfig.SERVER_CONFIG.SPRUCE_LOG_PILE_BURN_TIME::get))
                     .build(),
             ILikeWoodConfig.SERVER_CONFIG.SPRUCE_ENCHANTING_POWER_BONUS::get
     );
