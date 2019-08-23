@@ -1,15 +1,18 @@
 modLoader="javafml" #mandatory
 loaderVersion="[28,)" #mandatory
-# issueTrackerURL="http://my.issue.tracker/" #optional
+issueTrackerURL="https://github.com/Yamahari/I-Like-Wood/issues" #optional
 [[mods]] #mandatory
 modId="ilikewood" #mandatory
-version="${file.jarVersion}" #mandatory
+version="1.1.0.0" #mandatory
 displayName="I Like Wood" #mandatory
+displayURL="https://www.curseforge.com/minecraft/mc-mods/i-like-wood" #optional
 logoFile="logo.png" #optional
 credits="Yamahari and the people of Forge" #optional
 authors="Yamahari" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
+This mod adds wood variants for blocks that should have one but don't.
+It also adds a new wood related blocks.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.ilikewood]] #optional
