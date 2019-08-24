@@ -19,7 +19,7 @@ public class WoodenBedBlock extends BedBlock implements IWooden {
     public WoodenBedBlock(WoodType woodType, DyeColor dyeColor) {
         super(dyeColor, Block.Properties.create(Material.WOOL).sound(SoundType.WOOD).hardnessAndResistance(0.2f));
         this.woodType = woodType;
-        this.setRegistryName(this.getWoodType().getModId(), this.getColor().getName() + "_" + this.getWoodType().getName() + "_" + WoodenObjectType.BED.getName());
+        this.setRegistryName(this.getWoodType().getModId(), dyeColor.getName() + "_" + this.getWoodType().getName() + "_" + WoodenObjectType.BED.getName());
     }
 
     @Override
