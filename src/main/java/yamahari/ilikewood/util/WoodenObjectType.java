@@ -15,6 +15,8 @@ public enum WoodenObjectType implements IStringSerializable {
     PANELS("panels"),
     POST("post"),
     SCAFFOLDING("scaffolding"),
+    SLAB("slab"),
+    STAIRS("stairs"),
     STICK("stick"),
     STRIPPED_POST("stripped_%s_post"),
     TORCH("torch"),

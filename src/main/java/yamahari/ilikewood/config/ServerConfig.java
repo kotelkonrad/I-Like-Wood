@@ -280,6 +280,20 @@ public class ServerConfig {
     public final ForgeConfigSpec.IntValue OAK_LOG_PILE_BURN_TIME;
     public final ForgeConfigSpec.IntValue SPRUCE_LOG_PILE_BURN_TIME;
 
+    public final ForgeConfigSpec.IntValue ACACIA_STAIRS_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_STAIRS_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_STAIRS_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_STAIRS_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_STAIRS_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_STAIRS_BURN_TIME;
+
+    public final ForgeConfigSpec.IntValue ACACIA_SLAB_BURN_TIME;
+    public final ForgeConfigSpec.IntValue BIRCH_SLAB_BURN_TIME;
+    public final ForgeConfigSpec.IntValue DARK_OAK_SLAB_BURN_TIME;
+    public final ForgeConfigSpec.IntValue JUNGLE_SLAB_BURN_TIME;
+    public final ForgeConfigSpec.IntValue OAK_SLAB_BURN_TIME;
+    public final ForgeConfigSpec.IntValue SPRUCE_SLAB_BURN_TIME;
+
     public final ForgeConfigSpec.IntValue ACACIA_AXE_BURN_TIME;
     public final ForgeConfigSpec.IntValue BIRCH_AXE_BURN_TIME;
     public final ForgeConfigSpec.IntValue DARK_OAK_AXE_BURN_TIME;
@@ -700,6 +714,50 @@ public class ServerConfig {
                 .defineInRange("spruce", 400, -1, Integer.MAX_VALUE);
 
         builder.pop(); // log_pile
+
+        builder.comment("Stairs").push("stairs");
+
+        this.ACACIA_STAIRS_BURN_TIME = builder
+                .defineInRange("acacia", 300, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_STAIRS_BURN_TIME = builder
+                .defineInRange("birch", 300, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_STAIRS_BURN_TIME = builder
+                .defineInRange("dark_oak", 300, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_STAIRS_BURN_TIME = builder
+                .defineInRange("jungle", 300, -1, Integer.MAX_VALUE);
+
+        this.OAK_STAIRS_BURN_TIME = builder
+                .defineInRange("oak", 300, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_STAIRS_BURN_TIME = builder
+                .defineInRange("spruce", 300, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // stairs
+
+        builder.comment("Slab").push("slab");
+
+        this.ACACIA_SLAB_BURN_TIME = builder
+                .defineInRange("acacia", 150, -1, Integer.MAX_VALUE);
+
+        this.BIRCH_SLAB_BURN_TIME = builder
+                .defineInRange("birch", 150, -1, Integer.MAX_VALUE);
+
+        this.DARK_OAK_SLAB_BURN_TIME = builder
+                .defineInRange("dark_oak", 150, -1, Integer.MAX_VALUE);
+
+        this.JUNGLE_SLAB_BURN_TIME = builder
+                .defineInRange("jungle", 150, -1, Integer.MAX_VALUE);
+
+        this.OAK_SLAB_BURN_TIME = builder
+                .defineInRange("oak", 150, -1, Integer.MAX_VALUE);
+
+        this.SPRUCE_SLAB_BURN_TIME = builder
+                .defineInRange("spruce", 150, -1, Integer.MAX_VALUE);
+
+        builder.pop(); // slab
         
         builder.comment("Axe").push("axe");
 

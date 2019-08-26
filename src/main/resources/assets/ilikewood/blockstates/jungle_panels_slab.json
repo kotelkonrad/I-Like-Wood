@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ilikewood:block/panels/slab/jungle"
+    },
+    "type=top": {
+      "model": "ilikewood:block/panels/slab/top/jungle"
+    },
+    "type=double": {
+      "model": "ilikewood:block/panels/jungle"
+    }
+  }
+}

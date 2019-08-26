@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "ilikewood:block/panels/slab/spruce"
+    },
+    "type=top": {
+      "model": "ilikewood:block/panels/slab/top/spruce"
+    },
+    "type=double": {
+      "model": "ilikewood:block/panels/spruce"
+    }
+  }
+}

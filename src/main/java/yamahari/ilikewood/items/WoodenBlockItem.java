@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import yamahari.ilikewood.ILikeWood;
 import yamahari.ilikewood.util.IWooden;
 import yamahari.ilikewood.util.WoodType;
 import yamahari.ilikewood.util.WoodenObjectType;
@@ -30,6 +31,6 @@ public class WoodenBlockItem extends BlockItem implements IWooden {
 
     @Override
     public int getBurnTime(ItemStack itemStack) {
-        return this.getWoodType().getWoodTypeProperties(this.getWoodenObjectType()).getBurnTime();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodType().getWoodTypeProperties(this.getWoodenObjectType()).getBurnTime() : super.getBurnTime(itemStack);
     }
 }

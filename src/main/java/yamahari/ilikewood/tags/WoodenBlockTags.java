@@ -19,6 +19,8 @@ public class WoodenBlockTags {
     public static final Tag<Block> PANELS = new BlockTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "panels"));
     public static final Tag<Block> POSTS = new BlockTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "posts"));
     public static final Tag<Block> SCAFFOLDINGS = new BlockTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "scaffoldings"));
+    public static final Tag<Block> SLABS = new BlockTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "slabs"));
+    public static final Tag<Block> STAIRS = new BlockTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "stairs"));
     public static final Tag<Block> STRIPPED_POSTS = new BlockTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "stripped_posts"));
     public static final Tag<Block> TORCHES = new BlockTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "torches"));
     public static final Tag<Block> WALLS = new BlockTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "walls"));

@@ -20,6 +20,8 @@ public class WoodenItemTags {
     public static final Tag<Item> PANELS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "panels"));
     public static final Tag<Item> POSTS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "posts"));
     public static final Tag<Item> SCAFFOLDINGS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "scaffoldings"));
+    public static final Tag<Item> SLABS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "slabs"));
+    public static final Tag<Item> STAIRS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "stairs"));
     public static final Tag<Item> STICKS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "sticks"));
     public static final Tag<Item> STRIPPED_POSTS = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "stripped_posts"));
     public static final Tag<Item> TORCHES = new ItemTags.Wrapper(new ResourceLocation(Constants.MOD_ID, "torches"));
