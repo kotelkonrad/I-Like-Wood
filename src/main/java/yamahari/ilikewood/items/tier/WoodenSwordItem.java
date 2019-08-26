@@ -43,12 +43,12 @@ public class WoodenSwordItem extends SwordItem implements IWooden, IWoodenTiered
     @SuppressWarnings("NullableProblems")
     @Override
     public IItemTier getTier() {
-        return this.getWoodenItemTier();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier() : ItemTier.WOOD;
     }
 
     @Override
     public int getItemEnchantability() {
-        return this.getWoodenItemTier().getEnchantability();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getEnchantability() : ItemTier.WOOD.getEnchantability();
     }
 
     @Override
@@ -58,7 +58,7 @@ public class WoodenSwordItem extends SwordItem implements IWooden, IWoodenTiered
 
     @Override
     public int getMaxDamage(@Nullable ItemStack stack) {
-        return this.getWoodenItemTier().getMaxUses();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getMaxUses() : ItemTier.WOOD.getMaxUses();
     }
 
     @SuppressWarnings("NullableProblems")
@@ -69,16 +69,16 @@ public class WoodenSwordItem extends SwordItem implements IWooden, IWoodenTiered
 
     @Override
     public int getBurnTime(ItemStack itemStack) {
-        return this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getBurnTime();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getBurnTime() : super.getBurnTime(itemStack);
     }
 
     @Override
     public float getAttackDamage() {
-        return this.getWoodenItemTier().getAttackDamage() + this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getAttackDamage();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getAttackDamage() + this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getAttackDamage() : super.getAttackDamage();
     }
 
     public float getAttackSpeed() {
-        return this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getAttackSpeed();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getAttackSpeed() : 0.f;
     }
 
     @SuppressWarnings({"NullableProblems"})

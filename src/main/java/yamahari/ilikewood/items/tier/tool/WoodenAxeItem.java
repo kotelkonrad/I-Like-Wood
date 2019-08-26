@@ -48,25 +48,28 @@ public class WoodenAxeItem extends AxeItem implements IWooden, IWoodenTieredItem
     @SuppressWarnings("NullableProblems")
     @Override
     public IItemTier getTier() {
-        return this.getWoodenItemTier();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier() : ItemTier.WOOD;
     }
 
     @SuppressWarnings("NullableProblems")
     @Override
-    public int getHarvestLevel(ItemStack p_getHarvestLevel_1_, ToolType p_getHarvestLevel_2_, @Nullable PlayerEntity p_getHarvestLevel_3_, @Nullable BlockState p_getHarvestLevel_4_) {
-        return this.getWoodenItemTier().getHarvestLevel();
+    public int getHarvestLevel(ItemStack itemStack, ToolType toolType, @Nullable PlayerEntity playerEntity, @Nullable BlockState blockState) {
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getHarvestLevel() : super.getHarvestLevel(itemStack, toolType, playerEntity, blockState);
     }
 
     @SuppressWarnings("NullableProblems")
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        Material material = state.getMaterial();
-        boolean flag = material != Material.WOOD && material != Material.PLANTS && material != Material.TALL_PLANTS && material != Material.BAMBOO;
-        return getToolTypes(stack).stream().anyMatch(state::isToolEffective) || !flag ? this.getWoodenItemTier().getEfficiency() : 1.f;
+        if (ILikeWood.SERVER_CONFIG_LOADED) {
+            Material material = state.getMaterial();
+            boolean flag = material != Material.WOOD && material != Material.PLANTS && material != Material.TALL_PLANTS && material != Material.BAMBOO;
+            return getToolTypes(stack).stream().anyMatch(state::isToolEffective) || !flag ? this.getWoodenItemTier().getEfficiency() : 1.f;
+        }
+        return super.getDestroySpeed(stack, state);
     }
 
     @Override
     public int getItemEnchantability() {
-        return this.getWoodenItemTier().getEnchantability();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getEnchantability() : ItemTier.WOOD.getEnchantability();
     }
 
     @Override
@@ -76,7 +79,7 @@ public class WoodenAxeItem extends AxeItem implements IWooden, IWoodenTieredItem
 
     @Override
     public int getMaxDamage(@Nullable ItemStack stack) {
-        return this.getWoodenItemTier().getMaxUses();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getMaxUses() : ItemTier.WOOD.getMaxUses();
     }
 
     @SuppressWarnings("NullableProblems")
@@ -87,15 +90,15 @@ public class WoodenAxeItem extends AxeItem implements IWooden, IWoodenTieredItem
 
     @Override
     public int getBurnTime(ItemStack itemStack) {
-        return this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getBurnTime();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getBurnTime() : super.getBurnTime(itemStack);
     }
 
     public float getAttackDamage() {
-        return this.getWoodenItemTier().getAttackDamage() + this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getAttackDamage();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getAttackDamage() + this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getAttackDamage() : 0.f;
     }
 
     public float getAttackSpeed() {
-        return this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getAttackSpeed();
+        return ILikeWood.SERVER_CONFIG_LOADED ? this.getWoodenItemTier().getTieredItemProperties(this.getWoodenTieredItemType()).getAttackSpeed() : 0.f;
     }
 
     @SuppressWarnings({"NullableProblems"})
