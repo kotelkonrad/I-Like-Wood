@@ -2,6 +2,7 @@ package yamahari.ilikewood;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.DyeColor;
 import net.minecraft.item.Item;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.network.IContainerFactory;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -29,6 +31,7 @@ import yamahari.ilikewood.blocks.torch.WoodenWallTorchBlock;
 import yamahari.ilikewood.config.ILikeWoodConfig;
 import yamahari.ilikewood.container.WoodenLecternContainer;
 import yamahari.ilikewood.container.WoodenWorkbenchContainer;
+import yamahari.ilikewood.data.ILikeWoodRecipeProvider;
 import yamahari.ilikewood.items.*;
 import yamahari.ilikewood.items.tier.WoodenHoeItem;
 import yamahari.ilikewood.items.tier.WoodenSwordItem;
@@ -325,6 +328,14 @@ public class ILikeWood {
                 case SERVER:
                     SERVER_CONFIG_LOADED = true;
                     break;
+            }
+        }
+
+        @SubscribeEvent
+        public static void onGatherData(final GatherDataEvent event) {
+            DataGenerator dataGenerator = event.getGenerator();
+            if (event.includeServer()) {
+                dataGenerator.addProvider(new ILikeWoodRecipeProvider(dataGenerator));
             }
         }
     }
