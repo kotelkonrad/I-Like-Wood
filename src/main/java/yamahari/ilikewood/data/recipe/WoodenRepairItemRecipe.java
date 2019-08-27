@@ -1,4 +1,4 @@
-package yamahari.ilikewood.recipe;
+package yamahari.ilikewood.data.recipe;
 
 import com.google.common.collect.Lists;
 import net.minecraft.inventory.CraftingInventory;

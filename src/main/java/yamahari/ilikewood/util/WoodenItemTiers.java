@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 import yamahari.ilikewood.config.ILikeWoodConfig;
+import yamahari.ilikewood.objectholders.panels.WoodenPanelsItems;
 import yamahari.ilikewood.tier.WoodenItemTier;
 import yamahari.ilikewood.tier.WoodenTieredItemType;
 
@@ -16,7 +17,7 @@ public class WoodenItemTiers {
             ILikeWoodConfig.SERVER_CONFIG.ACACIA_EFFICIENCY::get,
             ILikeWoodConfig.SERVER_CONFIG.ACACIA_ATTACK_DAMAGE::get,
             ILikeWoodConfig.SERVER_CONFIG.ACACIA_ENCHANTABILITY::get,
-            () -> Ingredient.fromItems(Items.ACACIA_PLANKS),
+            () -> Ingredient.fromItems(WoodenPanelsItems.ACACIA),
             ImmutableMap.of(
                     WoodenTieredItemType.AXE,
                     new WoodenItemTier.TieredItemProperties(
@@ -59,7 +60,7 @@ public class WoodenItemTiers {
             ILikeWoodConfig.SERVER_CONFIG.BIRCH_EFFICIENCY::get,
             ILikeWoodConfig.SERVER_CONFIG.BIRCH_ATTACK_DAMAGE::get,
             ILikeWoodConfig.SERVER_CONFIG.BIRCH_ENCHANTABILITY::get,
-            () -> Ingredient.fromItems(Items.BIRCH_PLANKS),
+            () -> Ingredient.fromItems(WoodenPanelsItems.BIRCH),
             ImmutableMap.of(
                     WoodenTieredItemType.AXE,
                     new WoodenItemTier.TieredItemProperties(
@@ -102,7 +103,7 @@ public class WoodenItemTiers {
             ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_EFFICIENCY::get,
             ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_ATTACK_DAMAGE::get,
             ILikeWoodConfig.SERVER_CONFIG.DARK_OAK_ENCHANTABILITY::get,
-            () -> Ingredient.fromItems(Items.DARK_OAK_PLANKS),
+            () -> Ingredient.fromItems(WoodenPanelsItems.DARK_OAK),
             ImmutableMap.of(
                     WoodenTieredItemType.AXE,
                     new WoodenItemTier.TieredItemProperties(
@@ -145,7 +146,7 @@ public class WoodenItemTiers {
             ILikeWoodConfig.SERVER_CONFIG.JUNGLE_EFFICIENCY::get,
             ILikeWoodConfig.SERVER_CONFIG.JUNGLE_ATTACK_DAMAGE::get,
             ILikeWoodConfig.SERVER_CONFIG.JUNGLE_ENCHANTABILITY::get,
-            () -> Ingredient.fromItems(Items.JUNGLE_PLANKS),
+            () -> Ingredient.fromItems(WoodenPanelsItems.JUNGLE),
             ImmutableMap.of(
                     WoodenTieredItemType.AXE,
                     new WoodenItemTier.TieredItemProperties(
@@ -188,7 +189,7 @@ public class WoodenItemTiers {
             ILikeWoodConfig.SERVER_CONFIG.OAK_EFFICIENCY::get,
             ILikeWoodConfig.SERVER_CONFIG.OAK_ATTACK_DAMAGE::get,
             ILikeWoodConfig.SERVER_CONFIG.OAK_ENCHANTABILITY::get,
-            () -> Ingredient.fromItems(Items.OAK_PLANKS),
+            () -> Ingredient.fromItems(WoodenPanelsItems.OAK),
             ImmutableMap.of(
                     WoodenTieredItemType.AXE,
                     new WoodenItemTier.TieredItemProperties(
@@ -231,7 +232,7 @@ public class WoodenItemTiers {
             ILikeWoodConfig.SERVER_CONFIG.SPRUCE_EFFICIENCY::get,
             ILikeWoodConfig.SERVER_CONFIG.SPRUCE_ATTACK_DAMAGE::get,
             ILikeWoodConfig.SERVER_CONFIG.SPRUCE_ENCHANTABILITY::get,
-            () -> Ingredient.fromItems(Items.SPRUCE_PLANKS),
+            () -> Ingredient.fromItems(WoodenPanelsItems.SPRUCE),
             ImmutableMap.of(
                     WoodenTieredItemType.AXE,
                     new WoodenItemTier.TieredItemProperties(
