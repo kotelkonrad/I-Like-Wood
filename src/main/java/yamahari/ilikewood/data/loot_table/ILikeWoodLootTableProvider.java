@@ -36,7 +36,7 @@ public class ILikeWoodLootTableProvider implements IDataProvider {
         Map<ResourceLocation, LootTable> map = Maps.newHashMap();
         this.field_218444_e.forEach((lootParameterSetPair) -> lootParameterSetPair.getFirst().get().accept((resourceLocation, builder) -> {
             if (map.put(resourceLocation, builder.setParameterSet(lootParameterSetPair.getSecond()).build()) != null) {
-                throw new IllegalStateException("Duplicate loot table " + resourceLocation);
+                ILikeWood.logger.error("Duplicate loot table " + resourceLocation);
             }
         }));
         ValidationResults validationresults = new ValidationResults();
@@ -45,7 +45,7 @@ public class ILikeWoodLootTableProvider implements IDataProvider {
         Multimap<String, String> multimap = validationresults.getProblems();
         if (!multimap.isEmpty()) {
             multimap.forEach((s, s1) -> ILikeWood.logger.warn("Found validation problem in " + s + ": " + s1));
-            throw new IllegalStateException("Failed to validate loot tables, see logs");
+            ILikeWood.logger.error("Failed to validate loot tables, see logs");
         } else {
             map.forEach((resourceLocation, lootTable) -> {
                 ILikeWood.logger.info(resourceLocation.toString());
