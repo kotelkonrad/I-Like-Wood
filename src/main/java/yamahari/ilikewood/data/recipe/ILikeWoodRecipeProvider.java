@@ -18,6 +18,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.Tag;
 import net.minecraft.util.IItemProvider;
 import yamahari.ilikewood.ILikeWood;
+import yamahari.ilikewood.blocks.WoodenBedBlock;
 import yamahari.ilikewood.items.tier.WoodenHoeItem;
 import yamahari.ilikewood.items.tier.WoodenSwordItem;
 import yamahari.ilikewood.items.tier.tool.WoodenAxeItem;
@@ -184,53 +185,18 @@ public class ILikeWoodRecipeProvider extends RecipeProvider {
                     ShapedRecipeBuilder.shapedRecipe(block).key('#', ingredient).patternLine("##").patternLine("##").addCriterion("has_post", this.hasItem(ingredient)).build(consumer);
                 });
 
-        Stream.of(WoodenBlackBedBlocks.ACACIA, WoodenBlackBedBlocks.BIRCH, WoodenBlackBedBlocks.DARK_OAK, WoodenBlackBedBlocks.JUNGLE, WoodenBlackBedBlocks.OAK, WoodenBlackBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.BLACK_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.BLACK_WOOL)).build(consumer));
-
-        Stream.of(WoodenBlueBedBlocks.ACACIA, WoodenBlueBedBlocks.BIRCH, WoodenBlueBedBlocks.DARK_OAK, WoodenBlueBedBlocks.JUNGLE, WoodenBlueBedBlocks.OAK, WoodenBlueBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.BLUE_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.BLUE_WOOL)).build(consumer));
-
-        Stream.of(WoodenBrownBedBlocks.ACACIA, WoodenBrownBedBlocks.BIRCH, WoodenBrownBedBlocks.DARK_OAK, WoodenBrownBedBlocks.JUNGLE, WoodenBrownBedBlocks.OAK, WoodenBrownBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.BROWN_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.BROWN_WOOL)).build(consumer));
-
-        Stream.of(WoodenCyanBedBlocks.ACACIA, WoodenCyanBedBlocks.BIRCH, WoodenCyanBedBlocks.DARK_OAK, WoodenCyanBedBlocks.JUNGLE, WoodenCyanBedBlocks.OAK, WoodenCyanBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.CYAN_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.CYAN_WOOL)).build(consumer));
-
-        Stream.of(WoodenGrayBedBlocks.ACACIA, WoodenGrayBedBlocks.BIRCH, WoodenGrayBedBlocks.DARK_OAK, WoodenGrayBedBlocks.JUNGLE, WoodenGrayBedBlocks.OAK, WoodenGrayBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.GRAY_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.GRAY_WOOL)).build(consumer));
-
-        Stream.of(WoodenGreenBedBlocks.ACACIA, WoodenGreenBedBlocks.BIRCH, WoodenGreenBedBlocks.DARK_OAK, WoodenGreenBedBlocks.JUNGLE, WoodenGreenBedBlocks.OAK, WoodenGreenBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.GREEN_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.GREEN_WOOL)).build(consumer));
-
-        Stream.of(WoodenLightBlueBedBlocks.ACACIA, WoodenLightBlueBedBlocks.BIRCH, WoodenLightBlueBedBlocks.DARK_OAK, WoodenLightBlueBedBlocks.JUNGLE, WoodenLightBlueBedBlocks.OAK, WoodenLightBlueBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.LIGHT_BLUE_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.LIGHT_BLUE_WOOL)).build(consumer));
-
-        Stream.of(WoodenLightGrayBedBlocks.ACACIA, WoodenLightGrayBedBlocks.BIRCH, WoodenLightGrayBedBlocks.DARK_OAK, WoodenLightGrayBedBlocks.JUNGLE, WoodenLightGrayBedBlocks.OAK, WoodenLightGrayBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.LIGHT_GRAY_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.LIGHT_GRAY_WOOL)).build(consumer));
-
-        Stream.of(WoodenLimeBedBlocks.ACACIA, WoodenLimeBedBlocks.BIRCH, WoodenLimeBedBlocks.DARK_OAK, WoodenLimeBedBlocks.JUNGLE, WoodenLimeBedBlocks.OAK, WoodenLimeBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.LIME_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.LIME_WOOL)).build(consumer));
-
-        Stream.of(WoodenMagentaBedBlocks.ACACIA, WoodenMagentaBedBlocks.BIRCH, WoodenMagentaBedBlocks.DARK_OAK, WoodenMagentaBedBlocks.JUNGLE, WoodenMagentaBedBlocks.OAK, WoodenMagentaBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.MAGENTA_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.MAGENTA_WOOL)).build(consumer));
-
-        Stream.of(WoodenOrangeBedBlocks.ACACIA, WoodenOrangeBedBlocks.BIRCH, WoodenOrangeBedBlocks.DARK_OAK, WoodenOrangeBedBlocks.JUNGLE, WoodenOrangeBedBlocks.OAK, WoodenOrangeBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.ORANGE_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.ORANGE_WOOL)).build(consumer));
-
-        Stream.of(WoodenPinkBedBlocks.ACACIA, WoodenPinkBedBlocks.BIRCH, WoodenPinkBedBlocks.DARK_OAK, WoodenPinkBedBlocks.JUNGLE, WoodenPinkBedBlocks.OAK, WoodenPinkBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.PINK_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.PINK_WOOL)).build(consumer));
-
-        Stream.of(WoodenPurpleBedBlocks.ACACIA, WoodenPurpleBedBlocks.BIRCH, WoodenPurpleBedBlocks.DARK_OAK, WoodenPurpleBedBlocks.JUNGLE, WoodenPurpleBedBlocks.OAK, WoodenPurpleBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.PURPLE_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.PURPLE_WOOL)).build(consumer));
-
-        Stream.of(WoodenRedBedBlocks.ACACIA, WoodenRedBedBlocks.BIRCH, WoodenRedBedBlocks.DARK_OAK, WoodenRedBedBlocks.JUNGLE, WoodenRedBedBlocks.OAK, WoodenRedBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.RED_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.RED_WOOL)).build(consumer));
-
-        Stream.of(WoodenWhiteBedBlocks.ACACIA, WoodenWhiteBedBlocks.BIRCH, WoodenWhiteBedBlocks.DARK_OAK, WoodenWhiteBedBlocks.JUNGLE, WoodenWhiteBedBlocks.OAK, WoodenWhiteBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.WHITE_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.WHITE_WOOL)).build(consumer));
-
-        Stream.of(WoodenYellowBedBlocks.ACACIA, WoodenYellowBedBlocks.BIRCH, WoodenYellowBedBlocks.DARK_OAK, WoodenYellowBedBlocks.JUNGLE, WoodenYellowBedBlocks.OAK, WoodenYellowBedBlocks.SPRUCE)
-                .forEach(block -> ShapedRecipeBuilder.shapedRecipe(block).key('X', Items.YELLOW_WOOL).key('#', getIngredient(block.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(Items.YELLOW_WOOL)).build(consumer));
+        Stream.of(WoodenBlackBedBlocks.class, WoodenBlueBedBlocks.class, WoodenBrownBedBlocks.class, WoodenCyanBedBlocks.class, WoodenGrayBedBlocks.class, WoodenGreenBedBlocks.class, WoodenLightBlueBedBlocks.class, WoodenLightGrayBedBlocks.class, WoodenLimeBedBlocks.class, WoodenMagentaBedBlocks.class, WoodenOrangeBedBlocks.class, WoodenPinkBedBlocks.class, WoodenPurpleBedBlocks.class, WoodenRedBedBlocks.class, WoodenWhiteBedBlocks.class, WoodenYellowBedBlocks.class)
+                .forEach(bedClass -> Arrays.stream(bedClass.getDeclaredFields())
+                        .forEach(field -> {
+                            try {
+                                final WoodenBedBlock bed = (WoodenBedBlock) field.get(null);
+                                final IItemProvider ingredient = getIngredient(bed.getColor().getName().toUpperCase() + "_WOOL", Items.class);
+                                ShapedRecipeBuilder.shapedRecipe(bed).key('X', ingredient).key('#', getIngredient(bed.getWoodType().getName().toUpperCase(), WoodenPanelsBlocks.class)).patternLine("XXX").patternLine("###").addCriterion("has_wool", this.hasItem(ingredient)).build(consumer);
+                            } catch (IllegalAccessException | ClassCastException e) {
+                                ILikeWood.logger.error(e.getMessage());
+                                e.printStackTrace();
+                            }
+                        }));
 
         Stream.of(WoodenPanelsBlocks.ACACIA, WoodenPanelsBlocks.BIRCH, WoodenPanelsBlocks.DARK_OAK, WoodenPanelsBlocks.JUNGLE, WoodenPanelsBlocks.OAK, WoodenPanelsBlocks.SPRUCE)
                 .forEach(block -> {

@@ -31,6 +31,7 @@ import yamahari.ilikewood.blocks.torch.WoodenWallTorchBlock;
 import yamahari.ilikewood.config.ILikeWoodConfig;
 import yamahari.ilikewood.container.WoodenLecternContainer;
 import yamahari.ilikewood.container.WoodenWorkbenchContainer;
+import yamahari.ilikewood.data.loot_table.ILikeWoodLootTableProvider;
 import yamahari.ilikewood.data.recipe.ILikeWoodRecipeProvider;
 import yamahari.ilikewood.data.recipe.WoodenRepairItemRecipe;
 import yamahari.ilikewood.items.*;
@@ -336,6 +337,7 @@ public class ILikeWood {
             DataGenerator dataGenerator = event.getGenerator();
             if (event.includeServer()) {
                 dataGenerator.addProvider(new ILikeWoodRecipeProvider(dataGenerator));
+                dataGenerator.addProvider(new ILikeWoodLootTableProvider(dataGenerator));
             }
         }
     }
