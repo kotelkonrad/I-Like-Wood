@@ -2,6 +2,7 @@ package yamahari.ilikewood.data.loot_table;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import net.minecraft.advancements.criterion.EnchantmentPredicate;
 import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.advancements.criterion.MinMaxBounds;
@@ -16,6 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.*;
 import net.minecraft.world.storage.loot.conditions.*;
 import net.minecraft.world.storage.loot.functions.*;
+import yamahari.ilikewood.ILikeWood;
 import yamahari.ilikewood.objectholders.panels.WoodenPanelsBlocks;
 
 import java.util.Map;
@@ -46,7 +48,7 @@ public class ILikeWoodBlockLootTables implements Consumer<BiConsumer<ResourceLoc
     }
 
     private static LootTable.Builder func_218546_a(IItemProvider itemProvider) {
-        return LootTable.builder().addLootPool(func_218560_a(itemProvider, LootPool.builder().rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(itemProvider))));
+        return LootTable.builder().addLootPool(func_218560_a(itemProvider, LootPool.builder().name(itemProvider.asItem().toString()).rolls(ConstantRange.of(1)).addEntry(ItemLootEntry.builder(itemProvider))));
     }
 
     private static LootTable.Builder func_218494_a(Block block, ILootCondition.IBuilder lootConditionBuilder, LootEntry.Builder<?> lootEntryBuilder) {
@@ -148,6 +150,21 @@ public class ILikeWoodBlockLootTables implements Consumer<BiConsumer<ResourceLoc
         this.func_218492_c(WoodenPanelsBlocks.JUNGLE);
         this.func_218492_c(WoodenPanelsBlocks.OAK);
         this.func_218492_c(WoodenPanelsBlocks.SPRUCE);
+
+        Set<ResourceLocation> set = Sets.newHashSet();
+
+        Stream.of(WoodenPanelsBlocks.ACACIA, WoodenPanelsBlocks.BIRCH, WoodenPanelsBlocks.DARK_OAK, WoodenPanelsBlocks.JUNGLE, WoodenPanelsBlocks.OAK, WoodenPanelsBlocks.SPRUCE)
+                .forEach(block -> {
+                    ResourceLocation resourceLocation = block.getLootTable();
+                    if (resourceLocation != LootTables.EMPTY && set.add(resourceLocation)) {
+                        LootTable.Builder builder = this.field_218581_i.remove(resourceLocation);
+                        if (builder == null) {
+                            ILikeWood.logger.error(String.format("Missing loot_table '%s' for '%s'", resourceLocation, block.getRegistryName()));
+                        } else {
+                            consumer.accept(resourceLocation, builder);
+                        }
+                    }
+                });
     }
 
     public void func_218547_a(Block block) {
